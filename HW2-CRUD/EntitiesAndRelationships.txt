@@ -16,13 +16,14 @@ In the Science laboratory there are many entities but the main ones are:
 	They have 1 specific substrate per experiment(1:1) which can have a specific HealthRisk(1:1) associated
 	(i.e. Iodine-131 is radioactive).
 	Also an experiment can involve a subject testing which can be a human , rat, Streptococcus,etc. 
-	These testSubject have a specific Class(Mammal,Amphibian,etc) (1:1) and these classes can carry 
+	These testSubject have a specific Class(Mammal,Amphibian,etc) (1:1) and each subect can carry 
 	a specific HealthRisk too(1:1) (i.e. Bacteria can be infectious).
 	Also each class corresponds to a Kingdom (Animal,Eukariot,Fungi,Plant)
 	
 - Analyses:
 	This is a separate entity but can be a part of an experiment too, so as an experminet can have many analisis
 	and an analysis can be a part of many experiments, an intermediate table ExperimentsAnalyses is formed.
+	Every analisis has a Sample (1:1) to analyze and each sample has a Tool (1:1) for its obtaining.
 
 
 
