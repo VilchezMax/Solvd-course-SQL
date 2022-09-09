@@ -1,6 +1,6 @@
 # DIAGRAM
 
-![](https://github.com/VilchezMax/Solvd-course-SQL/blob/main/Science_laboratory_diagram.png)
+![](https://github.com/VilchezMax/Solvd-course-SQL/blob/main/Science_Laboratory_DER.png)
 
 **Science laboratory** 
 Scientists and laboratory assistants who work with different expreriments and analysis
