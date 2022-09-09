@@ -27,7 +27,7 @@ In the Science laboratory there are many entities but the main ones are:
 - **Analyses**:
 	This is a separate entity but can be a part of an experiment too, so as an experminet can have many analisis
 	and an analysis can be a part of many experiments, an intermediate table ExperimentsAnalyses is formed.
-	Every analisis has a Sample (1:1) to analyze and each sample has a Tool (1:1) for its obtaining.
+	Every analisis has a Sample (M:1) to analyze and each sample has a Tool (1:1) for its obtaining.
 
 
 
@@ -37,18 +37,20 @@ In the Science laboratory there are many entities but the main ones are:
 # RELATIONS
 
 
-|             |  Relation   |               |
-| :---        |    :----:   |          ---: |
-| Workers.role_id           | 1:1       | Roles.id   |
-| Workers.seniority_id      | 1:1       | Seniorities.id      |
-| LabWings.id               | 1:1       | Areas.wing_id   |
-| Experiments.subject_id    | 1:1       | TestSubjects.id   |
-| Experiments.substrate_id  | 1:1       | Substrates.id  |
-| Substrate.health_risk_id  | 1:1       | HealthRisks.id  |
-| TestSubject.class_id      | 1:1       | Class.id  |
-| Classes.kingdom_id        | 1:1       | Kingdoms.id  |
-| Classes.health_risk_id    | 1:1       | HealthRisks.id  |
-
+|                           |  Relation |                 |
+| :---                      |   :----:  |          ---:   |
+| Workers.role_id           | M:1       | Roles.id        |
+| Workers.seniority_id      | M:1       | Seniorities.id  |
+| LabWings.id               | M:1       | Areas.wing_id   |
+| Experiments.subject_id    | M:1       | TestSubjects.id |
+| Experiments.substrate_id  | M:1       | Substrates.id   |
+| Substrate.health_risk_id  | M:1       | HealthRisks.id  |
+| TestSubject.health_risk_id| M:1       | HealthRisks.id  |
+| TestSubject.class_id      | M:1       | Class.id        |
+| Classes.kingdom_id        | M:1       | Kingdoms.id     |
+| Classes.health_risk_id    | M:1       | HealthRisks.id  |
+| Analyses.sample_id        | M:1       | Samples.id      |
+| Samples.tool_id           | 1:1       | Tools.id        |
 
 
 ## INTERMEDIATE TABLES 
