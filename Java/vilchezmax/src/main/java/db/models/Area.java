@@ -5,7 +5,7 @@ import db.dao.IAreaDAO;
 
 public class Area extends MySQLDAO implements IAreaDAO {
     private Long id;
-    private LabWing wing;
+    private Long wingId;
     private String name;
     private String description;
 
@@ -17,12 +17,12 @@ public class Area extends MySQLDAO implements IAreaDAO {
         this.id = id;
     }
 
-    public LabWing getWing() {
-        return wing;
+    public Long getWingId() {
+        return wingId;
     }
 
-    public void setWing(LabWing wing) {
-        this.wing = wing;
+    public void setWingId(Long wingId) {
+        this.wingId = wingId;
     }
 
     public String getName() {

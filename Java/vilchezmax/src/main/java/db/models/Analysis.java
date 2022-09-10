@@ -6,7 +6,7 @@ import db.dao.IAnalysisDAO;
 public class Analysis extends MySQLDAO implements IAnalysisDAO {
     private Long id;
     private String title;
-    private Long sample;
+    private Long sampleId;
 
     public Long getId() {
         return id;
@@ -24,11 +24,11 @@ public class Analysis extends MySQLDAO implements IAnalysisDAO {
         this.title = title;
     }
 
-    public Sample getSample() {
-        return sample;
+    public Long getSampleId() {
+        return sampleId;
     }
 
-    public void setSample(Sample sample) {
-        this.sample = sample;
+    public void setSampleId(Long sampleId) {
+        this.sampleId = sampleId;
     }
 }

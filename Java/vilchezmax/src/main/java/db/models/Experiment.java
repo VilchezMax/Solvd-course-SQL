@@ -8,8 +8,8 @@ import javax.security.auth.Subject;
 public class Experiment extends MySQLDAO implements IExperimentDAO {
     private Long id;
     private String name;
-    private Subject subject;
-    private Substrate substrate;
+    private Long subjectId;
+    private Long substrateId;
 
     public Long getId() {
         return id;
@@ -27,19 +27,19 @@ public class Experiment extends MySQLDAO implements IExperimentDAO {
         this.name = name;
     }
 
-    public Subject getSubject() {
-        return subject;
+    public Long getSubjectId() {
+        return subjectId;
     }
 
-    public void setSubject(Subject subject) {
-        this.subject = subject;
+    public void setSubjectId(Long subjectId) {
+        this.subjectId = subjectId;
     }
 
-    public Substrate getSubstrate() {
-        return substrate;
+    public Long getSubstrateId() {
+        return substrateId;
     }
 
-    public void setSubstrate(Substrate substrate) {
-        this.substrate = substrate;
+    public void setSubstrateId(Long substrateId) {
+        this.substrateId = substrateId;
     }
 }

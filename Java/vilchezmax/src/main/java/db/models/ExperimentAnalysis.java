@@ -5,8 +5,8 @@ import db.dao.IExperimentAnalysisDAO;
 
 public class ExperimentAnalysis extends MySQLDAO implements IExperimentAnalysisDAO {
     private Long id;
-    private Experiment experiment;
-    private Analysis analysis;
+    private Long experimentId;
+    private Long analysisId;
 
     public Long getId() {
         return id;
@@ -16,19 +16,19 @@ public class ExperimentAnalysis extends MySQLDAO implements IExperimentAnalysisD
         this.id = id;
     }
 
-    public Experiment getExperiment() {
-        return experiment;
+    public Long getExperimentId() {
+        return experimentId;
     }
 
-    public void setExperiment(Experiment experiment) {
-        this.experiment = experiment;
+    public void setExperimentId(Long experimentId) {
+        this.experimentId = experimentId;
     }
 
-    public Analysis getAnalysis() {
-        return analysis;
+    public Long getAnalysisId() {
+        return analysisId;
     }
 
-    public void setAnalysis(Analysis analysis) {
-        this.analysis = analysis;
+    public void setAnalysisId(Long analysisId) {
+        this.analysisId = analysisId;
     }
 }

@@ -6,7 +6,7 @@ import db.dao.IClassDAO;
 public class Class extends MySQLDAO implements IClassDAO {
     private Long id;
     private String name;
-    private Kingdom kingdom;
+    private Long kingdomId;
 
     public Long getId() {
         return id;
@@ -24,11 +24,11 @@ public class Class extends MySQLDAO implements IClassDAO {
         this.name = name;
     }
 
-    public Kingdom getKingdom() {
-        return kingdom;
+    public Long getKingdomId() {
+        return kingdomId;
     }
 
-    public void setKingdom(Kingdom kingdom) {
-        this.kingdom = kingdom;
+    public void setKingdomId(Long kingdomId) {
+        this.kingdomId = kingdomId;
     }
 }

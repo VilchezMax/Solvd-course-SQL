@@ -6,7 +6,7 @@ import db.dao.ISubstrateDAO;
 public class Substrate  extends MySQLDAO implements ISubstrateDAO {
     private Long id;
     private String name;
-    private HealthRisk healthRisk;
+    private Long healthRiskId;
 
     public Long getId() {
         return id;
@@ -24,11 +24,11 @@ public class Substrate  extends MySQLDAO implements ISubstrateDAO {
         this.name = name;
     }
 
-    public HealthRisk getHealthRisk() {
-        return healthRisk;
+    public Long getHealthRiskId() {
+        return healthRiskId;
     }
 
-    public void setHealthRisk(HealthRisk healthRisk) {
-        this.healthRisk = healthRisk;
+    public void setHealthRiskId(Long healthRiskId) {
+        this.healthRiskId = healthRiskId;
     }
 }

@@ -6,7 +6,7 @@ import db.dao.ISampleDAO;
 public class Sample  extends MySQLDAO implements ISampleDAO {
     private Long id;
     private String name;
-    private Tool tool;
+    private Long toolId;
 
     public Long getId() {
         return id;
@@ -24,11 +24,11 @@ public class Sample  extends MySQLDAO implements ISampleDAO {
         this.name = name;
     }
 
-    public Tool getTool() {
-        return tool;
+    public Long getToolId() {
+        return toolId;
     }
 
-    public void setTool(Tool tool) {
-        this.tool = tool;
+    public void setToolId(Long toolId) {
+        this.toolId = toolId;
     }
 }

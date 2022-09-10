@@ -6,8 +6,8 @@ import db.dao.ITestSubjectDAO;
 public class TestSubject  extends MySQLDAO implements ITestSubjectDAO {
     private Long id;
     private String name;
-    private Class clazz;
-    private HealthRisk healthRisk;
+    private Long classId;
+    private Long healthRiskId;
 
     public Long getId() {
         return id;
@@ -25,19 +25,19 @@ public class TestSubject  extends MySQLDAO implements ITestSubjectDAO {
         this.name = name;
     }
 
-    public Class getClazz() {
-        return clazz;
+    public Long getClassId() {
+        return classId;
     }
 
-    public void setClazz(Class clazz) {
-        this.clazz = clazz;
+    public void setClassId(Long classId) {
+        this.classId = classId;
     }
 
-    public HealthRisk getHealthRisk() {
-        return healthRisk;
+    public Long getHealthRiskId() {
+        return healthRiskId;
     }
 
-    public void setHealthRisk(HealthRisk healthRisk) {
-        this.healthRisk = healthRisk;
+    public void setHealthRiskId(Long healthRiskId) {
+        this.healthRiskId = healthRiskId;
     }
 }

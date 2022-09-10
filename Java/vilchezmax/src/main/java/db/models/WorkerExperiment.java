@@ -5,8 +5,8 @@ import db.dao.IWorkerExperimentDAO;
 
 public class WorkerExperiment  extends MySQLDAO implements IWorkerExperimentDAO {
     private Long id;
-    private Worker worker;
-    private Experiment experiment;
+    private Long workerId;
+    private Long experimentId;
 
     public Long getId() {
         return id;
@@ -16,19 +16,19 @@ public class WorkerExperiment  extends MySQLDAO implements IWorkerExperimentDAO 
         this.id = id;
     }
 
-    public Worker getWorker() {
-        return worker;
+    public Long getWorkerId() {
+        return workerId;
     }
 
-    public void setWorker(Worker worker) {
-        this.worker = worker;
+    public void setWorkerId(Long workerId) {
+        this.workerId = workerId;
     }
 
-    public Experiment getExperiment() {
-        return experiment;
+    public Long getExperimentId() {
+        return experimentId;
     }
 
-    public void setExperiment(Experiment experiment) {
-        this.experiment = experiment;
+    public void setExperimentId(Long experimentId) {
+        this.experimentId = experimentId;
     }
 }

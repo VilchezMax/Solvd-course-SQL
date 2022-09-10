@@ -3,13 +3,13 @@ package db.models;
 import db.MySQLDAO;
 import db.dao.IWorkerDAO;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class Worker extends MySQLDAO implements IWorkerDAO {
     private Long id;
-    private Role role;
-    private Seniority seniority;
+    private Long roleId;
+    private Long seniorityId;
     private String firstName;
     private String lastName;
     private Long idNumber;
@@ -25,20 +25,20 @@ public class Worker extends MySQLDAO implements IWorkerDAO {
         this.id = id;
     }
 
-    public Role getRole() {
-        return role;
+    public Long getRoleId() {
+        return roleId;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
     }
 
-    public Seniority getSeniority() {
-        return seniority;
+    public Long getSeniorityId() {
+        return seniorityId;
     }
 
-    public void setSeniority(Seniority seniority) {
-        this.seniority = seniority;
+    public void setSeniorityId(Long seniorityId) {
+        this.seniorityId = seniorityId;
     }
 
     public String getFirstName() {
@@ -90,15 +90,19 @@ public class Worker extends MySQLDAO implements IWorkerDAO {
     }
 
     @Override
-    public void create(Worker object) {
+    public void create(Worker object) throws SQLException {
         //Connection x = x.getConnection();
-        //PreparedStatement ps = x.prepareStatement("INSERT INTO Worker VALUES(?,?,?,?,?,?,?)");
-        //ps.setInt(1,object.id);
-        //ps.setInt(2,object.role.id);
-        //ps.setInt(3,object.seniority.id);
-        //ps.setString(4,object);
-        //ps.setString(5,);
-        //ps.setInt(6,object.idNumber);
+        PreparedStatement ps = x.prepareStatement("INSERT INTO Worker VALUES(?,?,?,?,?,?,?)");
+        ps.setLong(1, object.getId());
+        ps.setLong(2, object.getRoleId());
+        ps.setLong(3, object.getSeniorityId());
+        ps.setString(4, object.getFirstName());
+        ps.setString(5, object.getLastName());
+        ps.setLong(6, object.getIdNumber());
+        ps.setString(7, object.getEmail());
+        ps.setLong(8, object.getWage());
+        ps.setBoolean(9, object.isPhd());
+
 
         //ResultSet result = ps.executeQuery();
     }

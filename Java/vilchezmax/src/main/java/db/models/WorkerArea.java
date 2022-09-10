@@ -5,8 +5,8 @@ import db.dao.IWorkerAreaDAO;
 
 public class WorkerArea  extends MySQLDAO implements IWorkerAreaDAO {
     private Long id;
-    private Area area;
-    private Worker worker;
+    private Long areaId;
+    private Long workerId;
 
     public Long getId() {
         return id;
@@ -16,19 +16,19 @@ public class WorkerArea  extends MySQLDAO implements IWorkerAreaDAO {
         this.id = id;
     }
 
-    public Area getArea() {
-        return area;
+    public Long getAreaId() {
+        return areaId;
     }
 
-    public void setArea(Area area) {
-        this.area = area;
+    public void setAreaId(Long areaId) {
+        this.areaId = areaId;
     }
 
-    public Worker getWorker() {
-        return worker;
+    public Long getWorkerId() {
+        return workerId;
     }
 
-    public void setWorker(Worker worker) {
-        this.worker = worker;
+    public void setWorkerId(Long workerId) {
+        this.workerId = workerId;
     }
 }
