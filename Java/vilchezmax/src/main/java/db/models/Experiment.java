@@ -1,4 +1,4 @@
-package jdbc.models;
+package db.models;
 
 import javax.security.auth.Subject;
 

@@ -1,6 +1,6 @@
-package jdbc.models;
+package db.models;
 
-public class Role {
+public class Tool {
     private Long id;
     private String name;
 }

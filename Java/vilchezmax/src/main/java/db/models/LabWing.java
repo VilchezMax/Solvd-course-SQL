@@ -1,6 +1,6 @@
-package jdbc.models;
+package db.models;
 
-public class Tool {
+public class LabWing {
     private Long id;
     private String name;
 }

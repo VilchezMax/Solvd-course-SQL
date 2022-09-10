@@ -1,4 +1,4 @@
-package jdbc;
+package db;
 
 import static org.junit.Assert.assertTrue;
 

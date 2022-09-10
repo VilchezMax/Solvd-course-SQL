@@ -1,4 +1,4 @@
-package jdbc.models;
+package db.models;
 
 public class TestSubject {
     private Long id;

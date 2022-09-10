@@ -9,5 +9,8 @@
         <module name="vilchezmax" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="vilchezmax" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>

@@ -1,4 +1,4 @@
-package jdbc.dao;
+package db.dao;
 
 public interface IBaseDAO<T> {
     void create(T object);

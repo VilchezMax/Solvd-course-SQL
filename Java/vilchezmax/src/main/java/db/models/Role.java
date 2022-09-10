@@ -1,6 +1,6 @@
-package jdbc.models;
+package db.models;
 
-public class Kingdom {
+public class Role {
     private Long id;
     private String name;
 }
