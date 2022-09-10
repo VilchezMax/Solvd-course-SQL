@@ -3,19 +3,17 @@ package db.models;
 import db.MySQLDAO;
 import db.dao.IExperimentDAO;
 
-import javax.security.auth.Subject;
-
 public class Experiment extends MySQLDAO implements IExperimentDAO {
-    private Long id;
+    private Integer id;
     private String name;
-    private Long subjectId;
-    private Long substrateId;
+    private Integer subjectId;
+    private Integer substrateId;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -27,19 +25,19 @@ public class Experiment extends MySQLDAO implements IExperimentDAO {
         this.name = name;
     }
 
-    public Long getSubjectId() {
+    public Integer getSubjectId() {
         return subjectId;
     }
 
-    public void setSubjectId(Long subjectId) {
+    public void setSubjectId(Integer subjectId) {
         this.subjectId = subjectId;
     }
 
-    public Long getSubstrateId() {
+    public Integer getSubstrateId() {
         return substrateId;
     }
 
-    public void setSubstrateId(Long substrateId) {
+    public void setSubstrateId(Integer substrateId) {
         this.substrateId = substrateId;
     }
 }

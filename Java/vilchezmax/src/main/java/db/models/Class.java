@@ -4,15 +4,15 @@ import db.MySQLDAO;
 import db.dao.IClassDAO;
 
 public class Class extends MySQLDAO implements IClassDAO {
-    private Long id;
+    private Integer id;
     private String name;
-    private Long kingdomId;
+    private Integer kingdomId;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -24,11 +24,11 @@ public class Class extends MySQLDAO implements IClassDAO {
         this.name = name;
     }
 
-    public Long getKingdomId() {
+    public Integer getKingdomId() {
         return kingdomId;
     }
 
-    public void setKingdomId(Long kingdomId) {
+    public void setKingdomId(Integer kingdomId) {
         this.kingdomId = kingdomId;
     }
 }

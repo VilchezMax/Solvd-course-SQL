@@ -3,32 +3,32 @@ package db.models;
 import db.MySQLDAO;
 import db.dao.IWorkerAreaDAO;
 
-public class WorkerArea  extends MySQLDAO implements IWorkerAreaDAO {
-    private Long id;
-    private Long areaId;
-    private Long workerId;
+public class WorkerArea extends MySQLDAO implements IWorkerAreaDAO {
+    private Integer id;
+    private Integer areaId;
+    private Integer workerId;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Long getAreaId() {
+    public Integer getAreaId() {
         return areaId;
     }
 
-    public void setAreaId(Long areaId) {
+    public void setAreaId(Integer areaId) {
         this.areaId = areaId;
     }
 
-    public Long getWorkerId() {
+    public Integer getWorkerId() {
         return workerId;
     }
 
-    public void setWorkerId(Long workerId) {
+    public void setWorkerId(Integer workerId) {
         this.workerId = workerId;
     }
 }

@@ -3,16 +3,16 @@ package db.models;
 import db.MySQLDAO;
 import db.dao.ISubstrateDAO;
 
-public class Substrate  extends MySQLDAO implements ISubstrateDAO {
-    private Long id;
+public class Substrate extends MySQLDAO implements ISubstrateDAO {
+    private Integer id;
     private String name;
-    private Long healthRiskId;
+    private Integer healthRiskId;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -24,11 +24,11 @@ public class Substrate  extends MySQLDAO implements ISubstrateDAO {
         this.name = name;
     }
 
-    public Long getHealthRiskId() {
+    public Integer getHealthRiskId() {
         return healthRiskId;
     }
 
-    public void setHealthRiskId(Long healthRiskId) {
+    public void setHealthRiskId(Integer healthRiskId) {
         this.healthRiskId = healthRiskId;
     }
 }

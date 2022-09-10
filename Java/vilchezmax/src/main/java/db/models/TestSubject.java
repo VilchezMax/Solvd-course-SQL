@@ -3,17 +3,17 @@ package db.models;
 import db.MySQLDAO;
 import db.dao.ITestSubjectDAO;
 
-public class TestSubject  extends MySQLDAO implements ITestSubjectDAO {
-    private Long id;
+public class TestSubject extends MySQLDAO implements ITestSubjectDAO {
+    private Integer id;
     private String name;
-    private Long classId;
-    private Long healthRiskId;
+    private Integer classId;
+    private Integer healthRiskId;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -25,19 +25,19 @@ public class TestSubject  extends MySQLDAO implements ITestSubjectDAO {
         this.name = name;
     }
 
-    public Long getClassId() {
+    public Integer getClassId() {
         return classId;
     }
 
-    public void setClassId(Long classId) {
+    public void setClassId(Integer classId) {
         this.classId = classId;
     }
 
-    public Long getHealthRiskId() {
+    public Integer getHealthRiskId() {
         return healthRiskId;
     }
 
-    public void setHealthRiskId(Long healthRiskId) {
+    public void setHealthRiskId(Integer healthRiskId) {
         this.healthRiskId = healthRiskId;
     }
 }

@@ -4,15 +4,15 @@ import db.MySQLDAO;
 import db.dao.IAnalysisDAO;
 
 public class Analysis extends MySQLDAO implements IAnalysisDAO {
-    private Long id;
+    private Integer id;
     private String title;
-    private Long sampleId;
+    private Integer sampleId;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -24,11 +24,11 @@ public class Analysis extends MySQLDAO implements IAnalysisDAO {
         this.title = title;
     }
 
-    public Long getSampleId() {
+    public Integer getSampleId() {
         return sampleId;
     }
 
-    public void setSampleId(Long sampleId) {
+    public void setSampleId(Integer sampleId) {
         this.sampleId = sampleId;
     }
 }

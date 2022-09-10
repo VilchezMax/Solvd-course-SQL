@@ -3,15 +3,15 @@ package db.models;
 import db.MySQLDAO;
 import db.dao.IHealthRiskDAO;
 
-public class HealthRisk  extends MySQLDAO implements IHealthRiskDAO {
-    private Long id;
+public class HealthRisk extends MySQLDAO implements IHealthRiskDAO {
+    private Integer id;
     private String level;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

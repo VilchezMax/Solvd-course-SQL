@@ -3,16 +3,16 @@ package db.models;
 import db.MySQLDAO;
 import db.dao.ISampleDAO;
 
-public class Sample  extends MySQLDAO implements ISampleDAO {
-    private Long id;
+public class Sample extends MySQLDAO implements ISampleDAO {
+    private Integer id;
     private String name;
-    private Long toolId;
+    private Integer toolId;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -24,11 +24,11 @@ public class Sample  extends MySQLDAO implements ISampleDAO {
         this.name = name;
     }
 
-    public Long getToolId() {
+    public Integer getToolId() {
         return toolId;
     }
 
-    public void setToolId(Long toolId) {
+    public void setToolId(Integer toolId) {
         this.toolId = toolId;
     }
 }

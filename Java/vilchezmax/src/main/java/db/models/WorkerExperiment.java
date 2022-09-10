@@ -3,32 +3,32 @@ package db.models;
 import db.MySQLDAO;
 import db.dao.IWorkerExperimentDAO;
 
-public class WorkerExperiment  extends MySQLDAO implements IWorkerExperimentDAO {
-    private Long id;
-    private Long workerId;
-    private Long experimentId;
+public class WorkerExperiment extends MySQLDAO implements IWorkerExperimentDAO {
+    private Integer id;
+    private Integer workerId;
+    private Integer experimentId;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Long getWorkerId() {
+    public Integer getWorkerId() {
         return workerId;
     }
 
-    public void setWorkerId(Long workerId) {
+    public void setWorkerId(Integer workerId) {
         this.workerId = workerId;
     }
 
-    public Long getExperimentId() {
+    public Integer getExperimentId() {
         return experimentId;
     }
 
-    public void setExperimentId(Long experimentId) {
+    public void setExperimentId(Integer experimentId) {
         this.experimentId = experimentId;
     }
 }

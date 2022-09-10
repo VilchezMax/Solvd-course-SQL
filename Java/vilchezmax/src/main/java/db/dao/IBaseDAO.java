@@ -2,7 +2,10 @@ package db.dao;
 
 public interface IBaseDAO<T> {
     void create(T object);
-    T getById(Long id);
+
+    T getById(Integer id);
+
     void update(T object);
-    void remove(Long id);
+
+    void remove(Integer id);
 }

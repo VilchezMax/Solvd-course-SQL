@@ -3,15 +3,15 @@ package db.models;
 import db.MySQLDAO;
 import db.dao.IToolDAO;
 
-public class Tool  extends MySQLDAO implements IToolDAO {
-    private Long id;
+public class Tool extends MySQLDAO implements IToolDAO {
+    private Integer id;
     private String name;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

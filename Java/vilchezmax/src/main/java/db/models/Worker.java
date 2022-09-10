@@ -3,41 +3,43 @@ package db.models;
 import db.MySQLDAO;
 import db.dao.IWorkerDAO;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Worker extends MySQLDAO implements IWorkerDAO {
-    private Long id;
-    private Long roleId;
-    private Long seniorityId;
+    private Integer id;
+    private Integer roleId;
+    private Integer seniorityId;
     private String firstName;
     private String lastName;
-    private Long idNumber;
+    private Integer idNumber;
     private String email;
-    private Long wage;
+    private Integer wage;
     private boolean phd;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Long getRoleId() {
+    public Integer getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(Long roleId) {
+    public void setRoleId(Integer roleId) {
         this.roleId = roleId;
     }
 
-    public Long getSeniorityId() {
+    public Integer getSeniorityId() {
         return seniorityId;
     }
 
-    public void setSeniorityId(Long seniorityId) {
+    public void setSeniorityId(Integer seniorityId) {
         this.seniorityId = seniorityId;
     }
 
@@ -57,11 +59,11 @@ public class Worker extends MySQLDAO implements IWorkerDAO {
         this.lastName = lastName;
     }
 
-    public Long getIdNumber() {
+    public Integer getIdNumber() {
         return idNumber;
     }
 
-    public void setIdNumber(Long idNumber) {
+    public void setIdNumber(Integer idNumber) {
         this.idNumber = idNumber;
     }
 
@@ -73,11 +75,11 @@ public class Worker extends MySQLDAO implements IWorkerDAO {
         this.email = email;
     }
 
-    public Long getWage() {
+    public Integer getWage() {
         return wage;
     }
 
-    public void setWage(Long wage) {
+    public void setWage(Integer wage) {
         this.wage = wage;
     }
 
@@ -91,38 +93,57 @@ public class Worker extends MySQLDAO implements IWorkerDAO {
 
     @Override
     public void create(Worker object) throws SQLException {
-        //Connection x = x.getConnection();
-        PreparedStatement ps = x.prepareStatement("INSERT INTO Worker VALUES(?,?,?,?,?,?,?)");
-        ps.setLong(1, object.getId());
-        ps.setLong(2, object.getRoleId());
-        ps.setLong(3, object.getSeniorityId());
+        Connection con = con.createStatement().getConnection();
+        PreparedStatement ps = con.prepareStatement("INSERT INTO Workers VALUES(?,?,?,?,?,?,?,?,?)");
+        ps.setInt(1, object.getId());
+        ps.setInt(2, object.getRoleId());
+        ps.setInt(3, object.getSeniorityId());
         ps.setString(4, object.getFirstName());
         ps.setString(5, object.getLastName());
-        ps.setLong(6, object.getIdNumber());
+        ps.setInt(6, object.getIdNumber());
         ps.setString(7, object.getEmail());
-        ps.setLong(8, object.getWage());
+        ps.setInt(8, object.getWage());
         ps.setBoolean(9, object.isPhd());
 
 
-        //ResultSet result = ps.executeQuery();
+        int result = ps.executeUpdate();
+        System.out.println(result + " rows updated.");
     }
 
     @Override
-    public Worker getById(Long id) {
-        //Connection x = x.getConnection();
-        //PreparedStatement ps = x.prepareStatement("SELECT * FROM Worker where id = ?");
-        //ps.setInt(1,id);
-        //ResultSet result = ps.executeQuery();
-        return null;
+    public Worker getById(Integer id) throws SQLException {
+        Connection con = con.createStatement().getConnection();
+        PreparedStatement ps = con.prepareStatement("SELECT * FROM Workers WHERE id = ?");
+        ps.setInt(1, id);
+        ResultSet result = ps.executeQuery();
+        return (Worker) result.getStatement();
     }
 
     @Override
-    public void update(Worker object) {
+    public void update(Worker object) throws SQLException {
+        Connection con = con.createStatement().getConnection();
+        PreparedStatement ps = con.prepareStatement
+                ("UPDATE Workers SET role_id=?,seniority_id=?,first_name=?,last_name=?,id_number=?,email=?,wage=?,phd=? WHERE id = ?");
+        ps.setInt(1, object.getRoleId());
+        ps.setInt(2, object.getSeniorityId());
+        ps.setString(3, object.getFirstName());
+        ps.setString(4, object.getLastName());
+        ps.setInt(5, object.getIdNumber());
+        ps.setString(6, object.getEmail());
+        ps.setInt(7, object.getWage());
+        ps.setBoolean(8, object.isPhd());
+        ps.setInt(9, object.getId());
 
+        int result = ps.executeUpdate();
+        System.out.println(result + " rows updated.");
     }
 
     @Override
-    public void remove(Long id) {
-
+    public void remove(Integer id) throws SQLException {
+        Connection con = con.createStatement().getConnection();
+        PreparedStatement ps = con.prepareStatement("DELETE FROM Worker where id = ?");
+        ps.setInt(1, id);
+        int result = ps.executeUpdate();
+        System.out.println(result + " rows updated.");
     }
 }

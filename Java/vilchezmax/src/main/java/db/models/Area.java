@@ -4,24 +4,24 @@ import db.MySQLDAO;
 import db.dao.IAreaDAO;
 
 public class Area extends MySQLDAO implements IAreaDAO {
-    private Long id;
-    private Long wingId;
+    private Integer id;
+    private Integer wingId;
     private String name;
     private String description;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Long getWingId() {
+    public Integer getWingId() {
         return wingId;
     }
 
-    public void setWingId(Long wingId) {
+    public void setWingId(Integer wingId) {
         this.wingId = wingId;
     }
 
