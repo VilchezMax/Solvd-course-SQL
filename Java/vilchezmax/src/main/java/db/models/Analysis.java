@@ -1,9 +1,12 @@
 package db.models;
 
-public class Analysis {
+import db.MySQLDAO;
+import db.dao.IAnalysisDAO;
+
+public class Analysis extends MySQLDAO implements IAnalysisDAO {
     private Long id;
     private String title;
-    private Sample sample;
+    private Long sample;
 
     public Long getId() {
         return id;

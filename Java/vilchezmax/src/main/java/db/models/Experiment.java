@@ -1,8 +1,11 @@
 package db.models;
 
+import db.MySQLDAO;
+import db.dao.IExperimentDAO;
+
 import javax.security.auth.Subject;
 
-public class Experiment {
+public class Experiment extends MySQLDAO implements IExperimentDAO {
     private Long id;
     private String name;
     private Subject subject;

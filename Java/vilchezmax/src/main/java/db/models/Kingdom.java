@@ -1,6 +1,9 @@
 package db.models;
 
-public class Kingdom {
+import db.MySQLDAO;
+import db.dao.IKingdomDAO;
+
+public class Kingdom extends MySQLDAO implements IKingdomDAO {
     private Long id;
     private String name;
 

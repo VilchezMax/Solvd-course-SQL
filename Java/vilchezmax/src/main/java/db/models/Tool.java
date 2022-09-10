@@ -1,6 +1,9 @@
 package db.models;
 
-public class Tool {
+import db.MySQLDAO;
+import db.dao.IToolDAO;
+
+public class Tool  extends MySQLDAO implements IToolDAO {
     private Long id;
     private String name;
 

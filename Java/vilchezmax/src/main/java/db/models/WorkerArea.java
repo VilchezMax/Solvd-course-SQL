@@ -1,6 +1,9 @@
 package db.models;
 
-public class WorkerArea {
+import db.MySQLDAO;
+import db.dao.IWorkerAreaDAO;
+
+public class WorkerArea  extends MySQLDAO implements IWorkerAreaDAO {
     private Long id;
     private Area area;
     private Worker worker;

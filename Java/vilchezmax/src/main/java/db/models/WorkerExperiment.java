@@ -1,6 +1,9 @@
 package db.models;
 
-public class WorkerExperiment {
+import db.MySQLDAO;
+import db.dao.IWorkerExperimentDAO;
+
+public class WorkerExperiment  extends MySQLDAO implements IWorkerExperimentDAO {
     private Long id;
     private Worker worker;
     private Experiment experiment;

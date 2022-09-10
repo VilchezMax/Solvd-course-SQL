@@ -1,6 +1,9 @@
 package db.models;
 
-public class LabWing {
+import db.MySQLDAO;
+import db.dao.ILabWingDAO;
+
+public class LabWing extends MySQLDAO implements ILabWingDAO {
     private Long id;
     private String name;
 

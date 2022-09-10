@@ -1,6 +1,9 @@
 package db.models;
 
-public class TestSubject {
+import db.MySQLDAO;
+import db.dao.ITestSubjectDAO;
+
+public class TestSubject  extends MySQLDAO implements ITestSubjectDAO {
     private Long id;
     private String name;
     private Class clazz;

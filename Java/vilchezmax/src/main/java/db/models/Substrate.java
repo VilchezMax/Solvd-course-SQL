@@ -1,6 +1,9 @@
 package db.models;
 
-public class Substrate {
+import db.MySQLDAO;
+import db.dao.ISubstrateDAO;
+
+public class Substrate  extends MySQLDAO implements ISubstrateDAO {
     private Long id;
     private String name;
     private HealthRisk healthRisk;

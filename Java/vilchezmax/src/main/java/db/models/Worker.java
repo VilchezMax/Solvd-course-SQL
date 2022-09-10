@@ -1,6 +1,12 @@
 package db.models;
 
-public class Worker {
+import db.MySQLDAO;
+import db.dao.IWorkerDAO;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+public class Worker extends MySQLDAO implements IWorkerDAO {
     private Long id;
     private Role role;
     private Seniority seniority;
@@ -81,5 +87,38 @@ public class Worker {
 
     public void setPhd(boolean phd) {
         this.phd = phd;
+    }
+
+    @Override
+    public void create(Worker object) {
+        //Connection x = x.getConnection();
+        //PreparedStatement ps = x.prepareStatement("INSERT INTO Worker VALUES(?,?,?,?,?,?,?)");
+        //ps.setInt(1,object.id);
+        //ps.setInt(2,object.role.id);
+        //ps.setInt(3,object.seniority.id);
+        //ps.setString(4,object);
+        //ps.setString(5,);
+        //ps.setInt(6,object.idNumber);
+
+        //ResultSet result = ps.executeQuery();
+    }
+
+    @Override
+    public Worker getById(Long id) {
+        //Connection x = x.getConnection();
+        //PreparedStatement ps = x.prepareStatement("SELECT * FROM Worker where id = ?");
+        //ps.setInt(1,id);
+        //ResultSet result = ps.executeQuery();
+        return null;
+    }
+
+    @Override
+    public void update(Worker object) {
+
+    }
+
+    @Override
+    public void remove(Long id) {
+
     }
 }
