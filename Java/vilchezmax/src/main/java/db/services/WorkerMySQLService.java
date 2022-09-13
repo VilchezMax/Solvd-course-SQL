@@ -8,7 +8,7 @@ import db.models.Worker;
 import java.sql.SQLException;
 import java.util.List;
 
-public class WorkerMySQLService extends MySQLWorkerDAO implements IWorkerDAO {
+public class WorkerMySQLService implements IWorkerDAO {
     Worker worker;
     Experiment experiments;
     Area areas;
@@ -21,10 +21,10 @@ public class WorkerMySQLService extends MySQLWorkerDAO implements IWorkerDAO {
     @Override
     public Worker getById(Integer id) throws SQLException {
         worker = worker.getById(id);
-        worker.setExperiments(experiments.getExperimentByWorkerId());
-        worker.setAreas(areas.getAreasByWorkerId());
+        //worker.setExperiments(experiments.getExperimentByWorkerId()); TODO
+        //worker.setAreas(areas.getAreasByWorkerId()); TODO
 
-        return null;
+        return worker;
     }
 
     @Override

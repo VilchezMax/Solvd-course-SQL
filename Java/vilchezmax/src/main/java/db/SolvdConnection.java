@@ -1,10 +1,15 @@
 package db;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class SolvdConnection {
+    final Logger logger = LogManager.getLogger(Connection.class);
+
     private String dbName = "science_laboratory";
     private String user = "root";
     private String password = "";
@@ -21,10 +26,10 @@ public class SolvdConnection {
             // get Connection
             conn = DriverManager.getConnection(url, user, password);
             if (conn != null) {
-                System.out.println("Connection to " + dbName + " successful.");
+                logger.info("Connection to " + dbName + " database was successful.");
             }
         } catch (ClassNotFoundException | SQLException e) {
-            System.out.println(e.getMessage());
+            logger.info(e.getMessage());
         }
     }
 
