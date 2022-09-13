@@ -1,6 +1,5 @@
 package db.models;
 
-import db.MySQLDAO;
 import db.dao.ISeniorityDAO;
 
 public class Seniority extends MySQLDAO implements ISeniorityDAO {

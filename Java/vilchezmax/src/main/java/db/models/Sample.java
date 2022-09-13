@@ -1,12 +1,11 @@
 package db.models;
 
-import db.MySQLDAO;
 import db.dao.ISampleDAO;
 
 public class Sample extends MySQLDAO implements ISampleDAO {
     private Integer id;
     private String name;
-    private Integer toolId;
+    private Tool tool;
 
     public Integer getId() {
         return id;
@@ -24,11 +23,11 @@ public class Sample extends MySQLDAO implements ISampleDAO {
         this.name = name;
     }
 
-    public Integer getToolId() {
-        return toolId;
+    public Tool getTool() {
+        return tool;
     }
 
-    public void setToolId(Integer toolId) {
-        this.toolId = toolId;
+    public void setTool(Tool tool) {
+        this.tool = tool;
     }
 }

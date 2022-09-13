@@ -1,13 +1,12 @@
 package db.models;
 
-import db.MySQLDAO;
 import db.dao.IExperimentDAO;
 
 public class Experiment extends MySQLDAO implements IExperimentDAO {
     private Integer id;
     private String name;
-    private Integer subjectId;
-    private Integer substrateId;
+    private TestSubject subject;
+    private Substrate substrate;
 
     public Integer getId() {
         return id;
@@ -25,19 +24,19 @@ public class Experiment extends MySQLDAO implements IExperimentDAO {
         this.name = name;
     }
 
-    public Integer getSubjectId() {
-        return subjectId;
+    public TestSubject getSubject() {
+        return subject;
     }
 
-    public void setSubjectId(Integer subjectId) {
-        this.subjectId = subjectId;
+    public void setSubject(TestSubject subject) {
+        this.subject = subject;
     }
 
-    public Integer getSubstrateId() {
-        return substrateId;
+    public Substrate getSubstrate() {
+        return substrate;
     }
 
-    public void setSubstrateId(Integer substrateId) {
-        this.substrateId = substrateId;
+    public void setSubstrate(Substrate substrate) {
+        this.substrate = substrate;
     }
 }

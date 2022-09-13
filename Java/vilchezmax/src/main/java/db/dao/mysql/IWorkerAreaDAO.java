@@ -1,4 +1,4 @@
-package db.dao;
+package db.dao.mysql;
 
 public interface IWorkerAreaDAO extends IBaseDAO<WorkerArea> {
 }

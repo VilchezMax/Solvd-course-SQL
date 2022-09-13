@@ -1,12 +1,15 @@
 package db.models;
 
-import db.MySQLDAO;
 import db.dao.IAnalysisDAO;
+
+import java.util.Map;
 
 public class Analysis extends MySQLDAO implements IAnalysisDAO {
     private Integer id;
     private String title;
-    private Integer sampleId;
+    private Sample sample;
+    private Map<Integer, Experiment> experiments;
+
 
     public Integer getId() {
         return id;
@@ -24,11 +27,19 @@ public class Analysis extends MySQLDAO implements IAnalysisDAO {
         this.title = title;
     }
 
-    public Integer getSampleId() {
-        return sampleId;
+    public Sample getSample() {
+        return sample;
     }
 
-    public void setSampleId(Integer sampleId) {
-        this.sampleId = sampleId;
+    public void setSample(Sample sample) {
+        this.sample = sample;
+    }
+
+    public Map<Integer, Experiment> getExperiments() {
+        return experiments;
+    }
+
+    public void setExperiments(Map<Integer, Experiment> experiments) {
+        this.experiments = experiments;
     }
 }

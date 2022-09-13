@@ -1,13 +1,12 @@
 package db.models;
 
-import db.MySQLDAO;
 import db.dao.ITestSubjectDAO;
 
 public class TestSubject extends MySQLDAO implements ITestSubjectDAO {
     private Integer id;
     private String name;
-    private Integer classId;
-    private Integer healthRiskId;
+    private Class clazz;
+    private HealthRisk healthRisk;
 
     public Integer getId() {
         return id;
@@ -25,19 +24,19 @@ public class TestSubject extends MySQLDAO implements ITestSubjectDAO {
         this.name = name;
     }
 
-    public Integer getClassId() {
-        return classId;
+    public Class getClazz() {
+        return clazz;
     }
 
-    public void setClassId(Integer classId) {
-        this.classId = classId;
+    public void setClazz(Class clazz) {
+        this.clazz = clazz;
     }
 
-    public Integer getHealthRiskId() {
-        return healthRiskId;
+    public HealthRisk getHealthRisk() {
+        return healthRisk;
     }
 
-    public void setHealthRiskId(Integer healthRiskId) {
-        this.healthRiskId = healthRiskId;
+    public void setHealthRisk(HealthRisk healthRisk) {
+        this.healthRisk = healthRisk;
     }
 }

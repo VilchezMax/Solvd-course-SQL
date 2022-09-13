@@ -1,12 +1,11 @@
 package db.models;
 
-import db.MySQLDAO;
 import db.dao.ISubstrateDAO;
 
 public class Substrate extends MySQLDAO implements ISubstrateDAO {
     private Integer id;
     private String name;
-    private Integer healthRiskId;
+    private HealthRisk healthRisk;
 
     public Integer getId() {
         return id;
@@ -24,11 +23,11 @@ public class Substrate extends MySQLDAO implements ISubstrateDAO {
         this.name = name;
     }
 
-    public Integer getHealthRiskId() {
-        return healthRiskId;
+    public HealthRisk getHealthRisk() {
+        return healthRisk;
     }
 
-    public void setHealthRiskId(Integer healthRiskId) {
-        this.healthRiskId = healthRiskId;
+    public void setHealthRisk(HealthRisk healthRisk) {
+        this.healthRisk = healthRisk;
     }
 }

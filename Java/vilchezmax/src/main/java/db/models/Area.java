@@ -1,11 +1,10 @@
 package db.models;
 
-import db.MySQLDAO;
 import db.dao.IAreaDAO;
 
 public class Area extends MySQLDAO implements IAreaDAO {
     private Integer id;
-    private Integer wingId;
+    private LabWing wing;
     private String name;
     private String description;
 
@@ -17,12 +16,12 @@ public class Area extends MySQLDAO implements IAreaDAO {
         this.id = id;
     }
 
-    public Integer getWingId() {
-        return wingId;
+    public LabWing getWing() {
+        return wing;
     }
 
-    public void setWingId(Integer wingId) {
-        this.wingId = wingId;
+    public void setWing(LabWing wing) {
+        this.wing = wing;
     }
 
     public String getName() {

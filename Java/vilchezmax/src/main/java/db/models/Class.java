@@ -1,12 +1,11 @@
 package db.models;
 
-import db.MySQLDAO;
 import db.dao.IClassDAO;
 
 public class Class extends MySQLDAO implements IClassDAO {
     private Integer id;
     private String name;
-    private Integer kingdomId;
+    private Kingdom kingdom;
 
     public Integer getId() {
         return id;
@@ -24,11 +23,11 @@ public class Class extends MySQLDAO implements IClassDAO {
         this.name = name;
     }
 
-    public Integer getKingdomId() {
-        return kingdomId;
+    public Kingdom getKingdom() {
+        return kingdom;
     }
 
-    public void setKingdomId(Integer kingdomId) {
-        this.kingdomId = kingdomId;
+    public void setKingdomId(Kingdom kingdom) {
+        this.kingdom = kingdom;
     }
 }

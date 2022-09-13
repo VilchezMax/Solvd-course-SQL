@@ -1,6 +1,5 @@
 package db.models;
 
-import db.MySQLDAO;
 import db.dao.IToolDAO;
 
 public class Tool extends MySQLDAO implements IToolDAO {

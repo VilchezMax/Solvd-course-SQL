@@ -1,9 +1,9 @@
-package db.dao;
+package db.dao.mysql;
 
 import db.models.Worker;
 
-import java.util.Map;
+import java.util.List;
 
 public interface IWorkerDAO extends IBaseDAO<Worker> {
-    Map<Integer, Worker> getAll();
+    List<Worker> getAll();
 }
