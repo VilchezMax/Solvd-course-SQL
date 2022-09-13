@@ -20,3 +20,6 @@ INNER JOIN labwings l ON  a.wing_id = l.id
 RIGHT JOIN workers w2 ON w2.id = w.worker_id 
 GROUP BY area_id  
 HAVING COUNT(l.id)>2;
+
+
+ 
