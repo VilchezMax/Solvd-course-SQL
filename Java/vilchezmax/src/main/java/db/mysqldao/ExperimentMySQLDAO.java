@@ -2,7 +2,6 @@ package db.mysqldao;
 
 import db.dao.IBaseDAO;
 import db.models.Experiment;
-import db.models.Worker;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -30,7 +29,7 @@ public class ExperimentMySQLDAO implements IBaseDAO<Experiment> {
     }
 
     @Override
-    public List<Worker> getAll() throws SQLException {
+    public List<Experiment> getAll() throws SQLException {
         return null;
     }
 }

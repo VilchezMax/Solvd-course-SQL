@@ -2,7 +2,6 @@ package db.mysqldao;
 
 import db.dao.IBaseDAO;
 import db.models.Area;
-import db.models.Worker;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -29,7 +28,7 @@ public class AreaMySQLDAO implements IBaseDAO<Area> {
     }
 
     @Override
-    public List<Worker> getAll() throws SQLException {
+    public List<Area> getAll() throws SQLException {
         return null;
     }
 }

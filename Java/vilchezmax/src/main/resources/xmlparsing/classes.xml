@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <worker>
     <id></id>
-    <role></role>
-    <seniority></seniority>
+    <role>
+        <id></id>
+        <name></name>
+    </role>
+    <seniority>
+        <id></id>
+        <name></name>
+    </seniority>
     <firstName></firstName>
     <lastName></lastName>
     <idNumber></idNumber>
@@ -10,13 +16,46 @@
     <wage></wage>
     <phd></phd>
     <experiments>
-        <experiment></experiment>
-        <experiment></experiment>
-        <experiment></experiment>
+        <experiment>
+            <id></id>
+            <name></name>
+            <subject>
+
+            </subject>
+            <substrate>
+
+            </substrate>
+        </experiment>
+        <experiment>
+            <id></id>
+            <name></name>
+            <subject>
+
+            </subject>
+            <substrate>
+
+            </substrate>
+        </experiment>
     </experiments>
     <areas>
-        <area></area>
-        <area></area>
+        <area>
+            <id></id>
+            <wing>
+                <id></id>
+                <name></name>
+            </wing>
+            <name></name>
+            <description></description>
+        </area>
+        <area>
+            <id></id>
+            <wing>
+                <id></id>
+                <name></name>
+            </wing>
+            <name></name>
+            <description></description>
+        </area>
     </areas>
 </worker>
 

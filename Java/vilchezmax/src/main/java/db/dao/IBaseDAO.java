@@ -1,7 +1,5 @@
 package db.dao;
 
-import db.models.Worker;
-
 import java.sql.SQLException;
 import java.util.List;
 
@@ -14,5 +12,5 @@ public interface IBaseDAO<T> {
 
     void remove(Integer id) throws SQLException;
 
-    List<Worker> getAll() throws SQLException;
+    List<T> getAll() throws SQLException;
 }

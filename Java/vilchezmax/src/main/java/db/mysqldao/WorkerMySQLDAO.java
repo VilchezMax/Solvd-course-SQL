@@ -19,7 +19,7 @@ public class WorkerMySQLDAO implements IBaseDAO<Worker> {
         Worker worker = new Worker();
         worker.setId(result.getInt(1));
         worker.setRole((Role) result.getObject(2)); //TODO DATATYPE FIX: HOW TO GET OBJECT DATA FROM DAO AND NOT SERVICE?
-        worker.setSeniority((Seniority) result.getObject(3)); //TODO DATATYPE FIX: CAST ONLY FOR COMPILING
+        worker.setSeniority((Seniority) result.getObject(3)); //TODO DATATYPE FIX: CAST IS ONLY FOR COMPILING
         worker.setFirstName(result.getString(4));
         worker.setLastName(result.getString(5));
         worker.setIdNumber(result.getInt(6));

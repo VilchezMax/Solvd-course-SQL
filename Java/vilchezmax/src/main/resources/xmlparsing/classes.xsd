@@ -2,27 +2,61 @@
 <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
            xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:element name="worker" type="workerType"/>
+    <xs:complexType name="roleType">
+        <xs:sequence>
+            <xs:element type="xs:int" name="id"/>
+            <xs:element type="xs:string" name="name"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="seniorityType">
+        <xs:sequence>
+            <xs:element type="xs:int" name="id"/>
+            <xs:element type="xs:string" name="name"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="experimentType">
+        <xs:sequence>
+            <xs:element type="xs:int" name="id"/>
+            <xs:element type="xs:string" name="name"/>
+            <xs:element type="xs:subjectType" name="subject"/>
+            <xs:element type="xs:substrateType" name="substrate"/>
+        </xs:sequence>
+    </xs:complexType>
     <xs:complexType name="experimentsType">
         <xs:sequence>
-            <xs:element type="xs:string" name="experiment" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element type="experimentType" name="experiment" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="wingType">
+        <xs:sequence>
+            <xs:element type="xs:int" name="id"/>
+            <xs:element type="xs:string" name="name"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="areaType">
+        <xs:sequence>
+            <xs:element type="xs:int" name="id"/>
+            <xs:element type="wingType" name="wing"/>
+            <xs:element type="xs:string" name="name"/>
+            <xs:element type="xs:string" name="description"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="areasType">
         <xs:sequence>
-            <xs:element type="xs:int" name="area" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element type="areaType" name="area" maxOccurs="unbounded" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="workerType">
         <xs:sequence>
             <xs:element type="xs:int" name="id"/>
-            <xs:element type="xs:int" name="role"/>
-            <xs:element type="xs:string" name="seniority"/>
+            <xs:element type="roleType" name="role"/>
+            <xs:element type="seniorityType" name="seniority"/>
             <xs:element type="xs:string" name="firstName"/>
             <xs:element type="xs:string" name="lastName"/>
-            <xs:element type="xs:string" name="idNumber"/>
+            <xs:element type="xs:int" name="idNumber"/>
             <xs:element type="xs:string" name="email"/>
-            <xs:element type="xs:string" name="wage"/>
-            <xs:element type="xs:string" name="phd"/>
+            <xs:element type="xs:int" name="wage"/>
+            <xs:element type="xs:boolean" name="phd"/>
             <xs:element type="experimentsType" name="experiments"/>
             <xs:element type="areasType" name="areas"/>
         </xs:sequence>
