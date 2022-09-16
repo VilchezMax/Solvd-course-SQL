@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<worker>
+    <id></id>
+    <role></role>
+    <seniority></seniority>
+    <firstName></firstName>
+    <lastName></lastName>
+    <idNumber></idNumber>
+    <email></email>
+    <wage></wage>
+    <phd></phd>
+    <experiments>
+        <experiment></experiment>
+        <experiment></experiment>
+        <experiment></experiment>
+    </experiments>
+    <areas>
+        <area></area>
+        <area></area>
+    </areas>
+</worker>
+
+
