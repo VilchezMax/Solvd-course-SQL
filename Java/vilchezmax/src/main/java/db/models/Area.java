@@ -1,8 +1,8 @@
 package db.models;
 
-import db.dao.IAreaDAO;
+import db.mysqldao.AreaMySQLDAO;
 
-public class Area extends MySQLDAO implements IAreaDAO {
+public class Area extends AreaMySQLDAO {
     private Integer id;
     private LabWing wing;
     private String name;

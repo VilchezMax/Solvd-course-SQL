@@ -1,8 +1,8 @@
 package db.models;
 
-import db.dao.ISampleDAO;
+import db.mysqldao.SampleMySQLDAO;
 
-public class Sample extends MySQLDAO implements ISampleDAO {
+public class Sample extends SampleMySQLDAO {
     private Integer id;
     private String name;
     private Tool tool;

@@ -1,8 +1,9 @@
 package db.models;
 
-import db.dao.IHealthRiskDAO;
 
-public class HealthRisk extends MySQLDAO implements IHealthRiskDAO {
+import db.mysqldao.HealthRiskMySQLDAO;
+
+public class HealthRisk extends HealthRiskMySQLDAO {
     private Integer id;
     private String level;
 

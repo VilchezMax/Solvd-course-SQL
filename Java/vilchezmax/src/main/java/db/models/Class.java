@@ -1,8 +1,8 @@
 package db.models;
 
-import db.dao.IClassDAO;
+import db.mysqldao.ClassMySQLDAO;
 
-public class Class extends MySQLDAO implements IClassDAO {
+public class Class extends ClassMySQLDAO {
     private Integer id;
     private String name;
     private Kingdom kingdom;

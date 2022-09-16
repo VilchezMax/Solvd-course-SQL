@@ -1,6 +1,7 @@
 package db.services;
 
-import db.dao.mysql.IWorkerDAO;
+
+import db.dao.IBaseDAO;
 import db.models.Area;
 import db.models.Experiment;
 import db.models.Worker;
@@ -8,7 +9,7 @@ import db.models.Worker;
 import java.sql.SQLException;
 import java.util.List;
 
-public class WorkerMySQLService implements IWorkerDAO {
+public class WorkerMySQLService implements IBaseDAO<Worker> {
     Worker worker;
     Experiment experiments;
     Area areas;

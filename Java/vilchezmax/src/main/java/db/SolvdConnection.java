@@ -13,7 +13,7 @@ public class SolvdConnection {
     private String dbName = "science_laboratory";
     private String user = "root";
     private String password = "";
-    private String url = "jdbc:mysql://localhost:8888/" + dbName + "?useUnicode=true&use"
+    private String url = "jdbc:mysqldao://localhost:8888/" + dbName + "?useUnicode=true&use"
             + "JDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&"
             + "serverTimezone=UTC";
 

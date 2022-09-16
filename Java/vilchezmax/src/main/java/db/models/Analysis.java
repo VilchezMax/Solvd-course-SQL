@@ -1,10 +1,10 @@
 package db.models;
 
-import db.dao.IAnalysisDAO;
+import db.mysqldao.AnalysisMySQLDAO;
 
 import java.util.Map;
 
-public class Analysis extends MySQLDAO implements IAnalysisDAO {
+public class Analysis extends AnalysisMySQLDAO {
     private Integer id;
     private String title;
     private Sample sample;

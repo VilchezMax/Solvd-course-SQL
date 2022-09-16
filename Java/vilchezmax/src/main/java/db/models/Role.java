@@ -1,8 +1,8 @@
 package db.models;
 
-import db.dao.IRoleDAO;
+import db.mysqldao.RoleMySQLDAO;
 
-public class Role extends MySQLDAO implements IRoleDAO {
+public class Role extends RoleMySQLDAO {
     private Integer id;
     private String name;
 

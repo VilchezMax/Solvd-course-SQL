@@ -1,8 +1,8 @@
 package db.models;
 
-import db.dao.IExperimentDAO;
+import db.mysqldao.ExperimentMySQLDAO;
 
-public class Experiment extends MySQLDAO implements IExperimentDAO {
+public class Experiment extends ExperimentMySQLDAO {
     private Integer id;
     private String name;
     private TestSubject subject;
