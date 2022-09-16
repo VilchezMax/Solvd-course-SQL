@@ -2,6 +2,8 @@ package db.mysqldao;
 
 import db.SolvdConnection;
 import db.dao.IBaseDAO;
+import db.models.Role;
+import db.models.Seniority;
 import db.models.Worker;
 
 import java.sql.Connection;
@@ -16,8 +18,8 @@ public class WorkerMySQLDAO implements IBaseDAO<Worker> {
     public Worker extractWorkerData(ResultSet result) throws SQLException {
         Worker worker = new Worker();
         worker.setId(result.getInt(1));
-        worker.setRole(result.getInt(2)); //TODO DATATYPE FIX: HOW TO GET OBJECT DATA FROM DAO AND NOT SERVICE?
-        worker.setSeniority(result.getInt(3)); //TODO DATATYPE FIX
+        worker.setRole((Role) result.getObject(2)); //TODO DATATYPE FIX: HOW TO GET OBJECT DATA FROM DAO AND NOT SERVICE?
+        worker.setSeniority((Seniority) result.getObject(3)); //TODO DATATYPE FIX: CAST ONLY FOR COMPILING
         worker.setFirstName(result.getString(4));
         worker.setLastName(result.getString(5));
         worker.setIdNumber(result.getInt(6));
@@ -74,8 +76,8 @@ public class WorkerMySQLDAO implements IBaseDAO<Worker> {
         try (Connection connection = new SolvdConnection().getConnection()) {
             ps = connection.prepareStatement(query);
 
-            ps.setInt(1, object.getRoleId());
-            ps.setInt(2, object.getSeniorityId());
+            ps.setInt(1, object.getRole().getId());
+            ps.setInt(2, object.getSeniority().getId());
             ps.setString(3, object.getFirstName());
             ps.setString(4, object.getLastName());
             ps.setInt(5, object.getIdNumber());
