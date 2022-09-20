@@ -29,14 +29,14 @@ public class XSDValidator {
         logger.info("XSD file: " + xsdPath);
         logger.info("XML file: " + xmlPath);
 
-        if (StAXValidator(xsdPath, xmlPath)) {
+        if (staxValidator(xsdPath, xmlPath)) {
             logger.log(Level.getLevel("SUCCESS"), (xmlPath + " is valid XML."));
         } else {
             logger.warn(xmlPath + " is not valid XML.");
         }
     }
 
-    public static boolean StAXValidator(String xsdPath, String xmlPath) {
+    public static boolean staxValidator(String xsdPath, String xmlPath) {
         try {
             XMLStreamReader reader = XMLInputFactory.newInstance().createXMLStreamReader(new FileInputStream(xmlPath));
             SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
