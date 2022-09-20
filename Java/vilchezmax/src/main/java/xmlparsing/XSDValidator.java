@@ -24,7 +24,7 @@ public class XSDValidator {
 
     public static void main(String[] args) {
         String xsdPath = "src/main/resources/xmlparsing/classesxsd/worker.xsd";
-        String xmlPath = "src/main/resources/xmlparsing/classesxml/worker.xml";
+        String xmlPath = "src/main/resources/xmlparsing/mock.xml";
 
         logger.info("XSD file: " + xsdPath);
         logger.info("XML file: " + xmlPath);

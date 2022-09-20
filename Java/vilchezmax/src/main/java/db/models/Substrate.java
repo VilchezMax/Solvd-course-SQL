@@ -2,7 +2,7 @@ package db.models;
 
 import javax.xml.bind.annotation.*;
 
-@XmlRootElement(name = "Substrate")
+@XmlRootElement(name = "substrate")
 @XmlType(propOrder = {"id", "name", "healthRisk"})
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Substrate {
@@ -10,7 +10,7 @@ public class Substrate {
     private Integer id;
     @XmlElement(name = "name")
     private String name;
-    @XmlElement(name = "healthRisk")
+    @XmlElement(name = "healthrisk")
     private HealthRisk healthRisk;
 
     public Integer getId() {

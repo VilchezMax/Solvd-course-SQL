@@ -3,19 +3,20 @@ package db.models;
 import javax.xml.bind.annotation.*;
 import java.util.List;
 
-@XmlRootElement(name = "Analysis")
+@XmlRootElement(name = "analysis")
 @XmlType(propOrder = {"id", "title", "sample", "experiments"})
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Analysis {
-    @XmlID
     @XmlAttribute
     private Integer id;
     @XmlElement(name = "title")
     private String title;
     @XmlElement(name = "sample")
     private Sample sample;
-    @XmlIDREF
-    @XmlElement(name = "experiment")
+    @XmlElementWrapper(name = "experiments")
+    @XmlElementRefs({
+            @XmlElementRef(name = "experiment", type = Experiment.class, required = true),
+    })
     private List<Experiment> experiments;
 
 

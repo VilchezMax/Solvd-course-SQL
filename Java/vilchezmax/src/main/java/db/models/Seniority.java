@@ -2,7 +2,7 @@ package db.models;
 
 import javax.xml.bind.annotation.*;
 
-@XmlRootElement(name = "Seniority")
+@XmlRootElement(name = "seniority")
 @XmlType(propOrder = {"id", "name"})
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Seniority {

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Worker id="1">
+    <role/>
+    <seniority/>
+    <firstName>Lionel</firstName>
+    <lastName>Messi</lastName>
+    <idNumber>10</idNumber>
+    <email>messi10@jaxb.com</email>
+    <wage>1011</wage>
+    <phd>true</phd>
+    <areas>
+        <area id="1">
+            <name>max</name>
+        </area>
+    </areas>
+</Worker>

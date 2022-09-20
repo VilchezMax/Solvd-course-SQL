@@ -3,11 +3,10 @@ package db.models;
 import javax.xml.bind.annotation.*;
 import java.util.List;
 
-@XmlRootElement(name = "Experiment")
+@XmlRootElement(name = "experiment")
 @XmlType(propOrder = {"id", "name", "subject", "substrate", "analyses", "workers"})
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Experiment {
-    @XmlID
     @XmlAttribute
     private Integer id;
     @XmlElement(name = "name")
@@ -16,11 +15,15 @@ public class Experiment {
     private TestSubject subject;
     @XmlElement(name = "substrate")
     private Substrate substrate;
-    @XmlIDREF
-    @XmlElement(name = "analysis")
+    @XmlElementWrapper(name = "analyses")
+    @XmlElementRefs({
+            @XmlElementRef(name = "analysis", type = Analysis.class, required = true),
+    })
     private List<Analysis> analyses;
-    @XmlIDREF
-    @XmlElement(name = "worker")
+    @XmlElementWrapper(name = "workers")
+    @XmlElementRefs({
+            @XmlElementRef(name = "worker", type = Worker.class, required = true),
+    })
     private List<Worker> workers;
 
     public Integer getId() {

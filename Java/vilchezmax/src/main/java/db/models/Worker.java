@@ -7,11 +7,10 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.Date;
 import java.util.List;
 
-@XmlRootElement(name = "Worker")
+@XmlRootElement(name = "worker")
 @XmlType(propOrder = {"id", "role", "seniority", "firstName", "lastName", "idNumber", "birthDate", "email", "wage", "phd", "experiments", "areas"})
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Worker {
-    @XmlID
     @XmlAttribute
     private Integer id;
     @XmlElement(name = "role")
@@ -33,11 +32,15 @@ public class Worker {
     private Integer wage;
     @XmlElement(name = "phd")
     private boolean phd;
-    @XmlIDREF
-    @XmlElement(name = "experiment")
+    @XmlElementWrapper(name = "experiments")
+    @XmlElementRefs({
+            @XmlElementRef(name = "experiment", type = Experiment.class, required = true),
+    })
     private List<Experiment> experiments;
-    @XmlIDREF
-    @XmlElement(name = "area")
+    @XmlElementWrapper(name = "areas")
+    @XmlElementRefs({
+            @XmlElementRef(name = "area", type = Area.class, required = true),
+    })
     private List<Area> areas;
 
     public Integer getId() {
