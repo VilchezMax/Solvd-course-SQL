@@ -1,12 +1,24 @@
 package db.models;
 
-import db.mysqldao.AreaMySQLDAO;
+import javax.xml.bind.annotation.*;
+import java.util.List;
 
-public class Area extends AreaMySQLDAO {
+@XmlRootElement(name = "Area")
+@XmlType(propOrder = {"id", "wing", "name", "description", "workers"})
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Area {
+    @XmlID
+    @XmlAttribute
     private Integer id;
+    @XmlElement(name = "wing")
     private LabWing wing;
+    @XmlElement(name = "name")
     private String name;
+    @XmlElement(name = "description")
     private String description;
+    @XmlIDREF
+    @XmlElement(name = "worker")
+    private List<Worker> workers;
 
     public Integer getId() {
         return id;
@@ -38,5 +50,13 @@ public class Area extends AreaMySQLDAO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Worker> getWorkers() {
+        return workers;
+    }
+
+    public void setWorkers(List<Worker> workers) {
+        this.workers = workers;
     }
 }

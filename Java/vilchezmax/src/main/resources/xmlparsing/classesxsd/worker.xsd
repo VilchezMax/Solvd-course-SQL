@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Worker" type="WorkerType"/>
+  <xs:complexType name="RoleType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="Name"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="Id"/>
+  </xs:complexType>
+  <xs:complexType name="SeniorityType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="Name"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="Id"/>
+  </xs:complexType>
+  <xs:complexType name="ExperimentType">
+    <xs:sequence>
+      <xs:element name="Name">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="CoViD-19 vaccine"/>
+            <xs:enumeration value="Eratosthenes' measurement of the Earth's circumference"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="Id" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="ExperimentsType">
+    <xs:sequence>
+      <xs:element type="ExperimentType" name="Experiment" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AreaType">
+    <xs:sequence>
+      <xs:element name="Name">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="area area"/>
+            <xs:enumeration value="area 2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="Description">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="blablablah"/>
+            <xs:enumeration value="blablablahhhhhhh"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="Id" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="AreasType">
+    <xs:sequence>
+      <xs:element type="AreaType" name="Area" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="WorkerType">
+    <xs:sequence>
+      <xs:element type="RoleType" name="Role"/>
+      <xs:element type="SeniorityType" name="Seniority"/>
+      <xs:element type="xs:string" name="FirstName"/>
+      <xs:element type="xs:string" name="LastName"/>
+      <xs:element type="xs:string" name="IdNumber"/>
+      <xs:element type="xs:string" name="BirthDate"/>
+      <xs:element type="xs:string" name="Email"/>
+      <xs:element type="xs:string" name="Wage"/>
+      <xs:element type="xs:string" name="PhD"/>
+      <xs:element type="ExperimentsType" name="Experiments"/>
+      <xs:element type="AreasType" name="Areas"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="Id"/>
+  </xs:complexType>
+</xs:schema>

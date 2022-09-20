@@ -1,9 +1,14 @@
 package db.models;
 
-import db.mysqldao.RoleMySQLDAO;
+import javax.xml.bind.annotation.*;
 
-public class Role extends RoleMySQLDAO {
+@XmlRootElement(name = "Role")
+@XmlType(propOrder = {"id", "name"})
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Role {
+    @XmlAttribute
     private Integer id;
+    @XmlElement(name = "name")
     private String name;
 
     public Integer getId() {

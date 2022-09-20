@@ -1,10 +1,16 @@
 package db.models;
 
-import db.mysqldao.SampleMySQLDAO;
+import javax.xml.bind.annotation.*;
 
-public class Sample extends SampleMySQLDAO {
+@XmlRootElement(name = "Sample")
+@XmlType(propOrder = {"id", "name", "tool"})
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Sample {
+    @XmlAttribute
     private Integer id;
+    @XmlElement(name = "name")
     private String name;
+    @XmlElement(name = "tool")
     private Tool tool;
 
     public Integer getId() {

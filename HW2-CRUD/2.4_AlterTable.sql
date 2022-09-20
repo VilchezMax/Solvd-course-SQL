@@ -13,5 +13,9 @@ ALTER TABLE testsubjects
 ALTER TABLE workers
 	MODIFY COLUMN published_articles INTEGER DEFAULT 0;
 
+ALTER TABLE workers
+	ADD birth_date DATE NOT NULL DEFAULT '1970-01-01';
+
+
 
 	

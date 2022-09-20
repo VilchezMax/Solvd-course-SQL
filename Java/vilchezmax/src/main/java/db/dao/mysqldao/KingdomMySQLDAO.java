@@ -1,8 +1,9 @@
-package db.mysqldao;
+package db.dao.mysqldao;
 
 import db.dao.IBaseDAO;
 import db.models.Kingdom;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -30,6 +31,11 @@ public class KingdomMySQLDAO implements IBaseDAO<Kingdom> {
 
     @Override
     public List<Kingdom> getAll() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public Kingdom extractData(ResultSet result) throws SQLException {
         return null;
     }
 }

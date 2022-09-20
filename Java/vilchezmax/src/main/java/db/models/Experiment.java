@@ -1,12 +1,27 @@
 package db.models;
 
-import db.mysqldao.ExperimentMySQLDAO;
+import javax.xml.bind.annotation.*;
+import java.util.List;
 
-public class Experiment extends ExperimentMySQLDAO {
+@XmlRootElement(name = "Experiment")
+@XmlType(propOrder = {"id", "name", "subject", "substrate", "analyses", "workers"})
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Experiment {
+    @XmlID
+    @XmlAttribute
     private Integer id;
+    @XmlElement(name = "name")
     private String name;
+    @XmlElement(name = "subject")
     private TestSubject subject;
+    @XmlElement(name = "substrate")
     private Substrate substrate;
+    @XmlIDREF
+    @XmlElement(name = "analysis")
+    private List<Analysis> analyses;
+    @XmlIDREF
+    @XmlElement(name = "worker")
+    private List<Worker> workers;
 
     public Integer getId() {
         return id;
@@ -38,5 +53,21 @@ public class Experiment extends ExperimentMySQLDAO {
 
     public void setSubstrate(Substrate substrate) {
         this.substrate = substrate;
+    }
+
+    public List<Analysis> getAnalyses() {
+        return analyses;
+    }
+
+    public void setAnalyses(List<Analysis> analyses) {
+        this.analyses = analyses;
+    }
+
+    public List<Worker> getWorkers() {
+        return workers;
+    }
+
+    public void setWorkers(List<Worker> workers) {
+        this.workers = workers;
     }
 }

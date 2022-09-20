@@ -1,12 +1,13 @@
-package db.mysqldao;
+package db.dao.mysqldao;
 
-import db.dao.IBaseDAO;
+import db.dao.IAreasDAO;
 import db.models.Area;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class AreaMySQLDAO implements IBaseDAO<Area> {
+public class AreaMySQLDAO implements IAreasDAO<Area> {
     @Override
     public void create(Area object) throws SQLException {
 
@@ -29,6 +30,16 @@ public class AreaMySQLDAO implements IBaseDAO<Area> {
 
     @Override
     public List<Area> getAll() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public Area extractData(ResultSet result) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public List<Area> getAllByWorkerId(Integer id) {
         return null;
     }
 }

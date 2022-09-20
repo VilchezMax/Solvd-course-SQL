@@ -18,8 +18,8 @@
         <xs:sequence>
             <xs:element type="xs:int" name="id"/>
             <xs:element type="xs:string" name="name"/>
-            <xs:element type="xs:subjectType" name="subject"/>
-            <xs:element type="xs:substrateType" name="substrate"/>
+            <xs:element type="SubjectType" name="subject"/>
+            <xs:element type="SubstrateType" name="substrate"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="experimentsType">

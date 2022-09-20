@@ -1,11 +1,18 @@
 package db.models;
 
-import db.mysqldao.TestSubjectMySQLDAO;
+import javax.xml.bind.annotation.*;
 
-public class TestSubject extends TestSubjectMySQLDAO {
+@XmlRootElement(name = "Subject")
+@XmlType(propOrder = {"id", "name", "clazz", "healthRisk"})
+@XmlAccessorType(XmlAccessType.FIELD)
+public class TestSubject {
+    @XmlAttribute
     private Integer id;
+    @XmlElement(name = "name")
     private String name;
+    @XmlElement(name = "clazz")
     private Class clazz;
+    @XmlElement(name = "healthRisk")
     private HealthRisk healthRisk;
 
     public Integer getId() {

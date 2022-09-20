@@ -1,8 +1,9 @@
-package db.mysqldao;
+package db.dao.mysqldao;
 
 import db.dao.IBaseDAO;
 import db.models.Sample;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -30,6 +31,11 @@ public class SampleMySQLDAO implements IBaseDAO<Sample> {
 
     @Override
     public List<Sample> getAll() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public Sample extractData(ResultSet result) throws SQLException {
         return null;
     }
 }

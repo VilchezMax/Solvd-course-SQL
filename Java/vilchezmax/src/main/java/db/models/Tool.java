@@ -1,9 +1,14 @@
 package db.models;
 
-import db.mysqldao.ToolMySQLDAO;
+import javax.xml.bind.annotation.*;
 
-public class Tool extends ToolMySQLDAO {
+@XmlRootElement(name = "Tool")
+@XmlType(propOrder = {"id", "name"})
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Tool {
+    @XmlAttribute
     private Integer id;
+    @XmlElement(name = "name")
     private String name;
 
     public Integer getId() {

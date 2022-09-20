@@ -1,9 +1,14 @@
 package db.models;
 
-import db.mysqldao.KingdomMySQLDAO;
+import javax.xml.bind.annotation.*;
 
-public class Kingdom extends KingdomMySQLDAO {
+@XmlRootElement(name = "Kingdom")
+@XmlType(propOrder = {"id", "name"})
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Kingdom {
+    @XmlAttribute
     private Integer id;
+    @XmlElement(name = "name")
     private String name;
 
     public Integer getId() {

@@ -1,8 +1,9 @@
-package db.mysqldao;
+package db.dao.mysqldao;
 
 import db.dao.IBaseDAO;
 import db.models.Tool;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -30,6 +31,11 @@ public class ToolMySQLDAO implements IBaseDAO<Tool> {
 
     @Override
     public List<Tool> getAll() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public Tool extractData(ResultSet result) throws SQLException {
         return null;
     }
 }

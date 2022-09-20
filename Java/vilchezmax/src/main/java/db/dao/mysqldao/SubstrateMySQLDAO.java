@@ -1,8 +1,9 @@
-package db.mysqldao;
+package db.dao.mysqldao;
 
 import db.dao.IBaseDAO;
 import db.models.Substrate;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -30,6 +31,11 @@ public class SubstrateMySQLDAO implements IBaseDAO<Substrate> {
 
     @Override
     public List<Substrate> getAll() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public Substrate extractData(ResultSet result) throws SQLException {
         return null;
     }
 }

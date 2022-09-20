@@ -1,14 +1,22 @@
 package db.models;
 
-import db.mysqldao.AnalysisMySQLDAO;
+import javax.xml.bind.annotation.*;
+import java.util.List;
 
-import java.util.Map;
-
-public class Analysis extends AnalysisMySQLDAO {
+@XmlRootElement(name = "Analysis")
+@XmlType(propOrder = {"id", "title", "sample", "experiments"})
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Analysis {
+    @XmlID
+    @XmlAttribute
     private Integer id;
+    @XmlElement(name = "title")
     private String title;
+    @XmlElement(name = "sample")
     private Sample sample;
-    private Map<Integer, Experiment> experiments;
+    @XmlIDREF
+    @XmlElement(name = "experiment")
+    private List<Experiment> experiments;
 
 
     public Integer getId() {
@@ -35,11 +43,11 @@ public class Analysis extends AnalysisMySQLDAO {
         this.sample = sample;
     }
 
-    public Map<Integer, Experiment> getExperiments() {
+    public List<Experiment> getExperiments() {
         return experiments;
     }
 
-    public void setExperiments(Map<Integer, Experiment> experiments) {
+    public void setExperiments(List<Experiment> experiments) {
         this.experiments = experiments;
     }
 }

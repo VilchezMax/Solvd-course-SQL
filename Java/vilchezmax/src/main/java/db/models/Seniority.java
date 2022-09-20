@@ -1,9 +1,14 @@
 package db.models;
 
-import db.mysqldao.SeniorityMySQLDAO;
+import javax.xml.bind.annotation.*;
 
-public class Seniority extends SeniorityMySQLDAO {
+@XmlRootElement(name = "Seniority")
+@XmlType(propOrder = {"id", "name"})
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Seniority {
+    @XmlAttribute
     private Integer id;
+    @XmlElement(name = "name")
     private String name;
 
     public Integer getId() {

@@ -1,8 +1,9 @@
-package db.mysqldao;
+package db.dao.mysqldao;
 
 import db.dao.IBaseDAO;
 import db.models.HealthRisk;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -30,6 +31,11 @@ public class HealthRiskMySQLDAO implements IBaseDAO<HealthRisk> {
 
     @Override
     public List<HealthRisk> getAll() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public HealthRisk extractData(ResultSet result) throws SQLException {
         return null;
     }
 }

@@ -1,8 +1,9 @@
-package db.mysqldao;
+package db.dao.mysqldao;
 
 import db.dao.IBaseDAO;
 import db.models.LabWing;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -30,6 +31,11 @@ public class LabWingMySQLDAO implements IBaseDAO<LabWing> {
 
     @Override
     public List<LabWing> getAll() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public LabWing extractData(ResultSet result) throws SQLException {
         return null;
     }
 }

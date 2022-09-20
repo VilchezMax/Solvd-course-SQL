@@ -1,9 +1,14 @@
 package db.models;
 
-import db.mysqldao.LabWingMySQLDAO;
+import javax.xml.bind.annotation.*;
 
-public class LabWing extends LabWingMySQLDAO {
+@XmlRootElement(name = "LabWing")
+@XmlType(propOrder = {"id", "name"})
+@XmlAccessorType(XmlAccessType.FIELD)
+public class LabWing {
+    @XmlAttribute
     private Integer id;
+    @XmlElement(name = "name")
     private String name;
 
     public Integer getId() {

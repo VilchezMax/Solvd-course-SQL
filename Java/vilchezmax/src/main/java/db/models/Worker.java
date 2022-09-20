@@ -1,34 +1,49 @@
 package db.models;
 
-import db.mysqldao.WorkerMySQLDAO;
+import db.DateAdapter;
 
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.util.Date;
 import java.util.List;
 
-@XmlRootElement(name = "book")
-@XmlType(propOrder = {"id", "role", "seniority", "firstName", "lastName", "idNumber", "email", "wage", "phd", "experiments", "areas"})
-public class Worker extends WorkerMySQLDAO {
-
+@XmlRootElement(name = "Worker")
+@XmlType(propOrder = {"id", "role", "seniority", "firstName", "lastName", "idNumber", "birthDate", "email", "wage", "phd", "experiments", "areas"})
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Worker {
+    @XmlID
+    @XmlAttribute
     private Integer id;
+    @XmlElement(name = "role")
     private Role role;
+    @XmlElement(name = "seniority")
     private Seniority seniority;
+    @XmlElement(name = "firstName")
     private String firstName;
+    @XmlElement(name = "lastName")
     private String lastName;
+    @XmlElement(name = "idNumber")
     private Integer idNumber;
+    @XmlJavaTypeAdapter(DateAdapter.class)
+    @XmlElement(name = "birthDate")
+    private Date birthDate;
+    @XmlElement(name = "email")
     private String email;
+    @XmlElement(name = "wage")
     private Integer wage;
+    @XmlElement(name = "phd")
     private boolean phd;
+    @XmlIDREF
+    @XmlElement(name = "experiment")
     private List<Experiment> experiments;
+    @XmlIDREF
+    @XmlElement(name = "area")
     private List<Area> areas;
 
     public Integer getId() {
         return id;
     }
 
-    @XmlAttribute
     public void setId(Integer id) {
         this.id = id;
     }
@@ -37,7 +52,6 @@ public class Worker extends WorkerMySQLDAO {
         return role;
     }
 
-    @XmlElement(name = "role")
     public void setRole(Role role) {
         this.role = role;
     }
@@ -46,7 +60,7 @@ public class Worker extends WorkerMySQLDAO {
         return seniority;
     }
 
-    @XmlElement(name = "seniority")
+
     public void setSeniority(Seniority seniority) {
         this.seniority = seniority;
     }
@@ -54,6 +68,7 @@ public class Worker extends WorkerMySQLDAO {
     public String getFirstName() {
         return firstName;
     }
+
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -63,7 +78,7 @@ public class Worker extends WorkerMySQLDAO {
         return lastName;
     }
 
-    @XmlElement(name = "lastName")
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
@@ -72,16 +87,22 @@ public class Worker extends WorkerMySQLDAO {
         return idNumber;
     }
 
-    @XmlElement(name = "idNumber")
     public void setIdNumber(Integer idNumber) {
         this.idNumber = idNumber;
+    }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 
     public String getEmail() {
         return email;
     }
 
-    @XmlElement(name = "email")
     public void setEmail(String email) {
         this.email = email;
     }
@@ -90,7 +111,6 @@ public class Worker extends WorkerMySQLDAO {
         return wage;
     }
 
-    @XmlElement(name = "wage")
     public void setWage(Integer wage) {
         this.wage = wage;
     }
@@ -99,7 +119,6 @@ public class Worker extends WorkerMySQLDAO {
         return phd;
     }
 
-    @XmlElement(name = "phd")
     public void setPhd(boolean phd) {
         this.phd = phd;
     }
@@ -108,7 +127,6 @@ public class Worker extends WorkerMySQLDAO {
         return experiments;
     }
 
-    @XmlElement(name = "experiments")
     public void setExperiments(List<Experiment> experiments) {
         this.experiments = experiments;
     }
@@ -117,7 +135,6 @@ public class Worker extends WorkerMySQLDAO {
         return areas;
     }
 
-    @XmlElement(name = "areas")
     public void setAreas(List<Area> areas) {
         this.areas = areas;
     }

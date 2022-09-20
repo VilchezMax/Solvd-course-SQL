@@ -1,8 +1,9 @@
-package db.mysqldao;
+package db.dao.mysqldao;
 
 import db.dao.IBaseDAO;
 import db.models.Seniority;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -30,6 +31,11 @@ public class SeniorityMySQLDAO implements IBaseDAO<Seniority> {
 
     @Override
     public List<Seniority> getAll() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public Seniority extractData(ResultSet result) throws SQLException {
         return null;
     }
 }

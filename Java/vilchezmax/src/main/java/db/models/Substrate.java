@@ -1,10 +1,16 @@
 package db.models;
 
-import db.mysqldao.SubstrateMySQLDAO;
+import javax.xml.bind.annotation.*;
 
-public class Substrate extends SubstrateMySQLDAO {
+@XmlRootElement(name = "Substrate")
+@XmlType(propOrder = {"id", "name", "healthRisk"})
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Substrate {
+    @XmlAttribute
     private Integer id;
+    @XmlElement(name = "name")
     private String name;
+    @XmlElement(name = "healthRisk")
     private HealthRisk healthRisk;
 
     public Integer getId() {

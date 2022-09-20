@@ -1,10 +1,16 @@
 package db.models;
 
-import db.mysqldao.ClassMySQLDAO;
+import javax.xml.bind.annotation.*;
 
-public class Class extends ClassMySQLDAO {
+@XmlRootElement(name = "Class")
+@XmlType(propOrder = {"id", "name", "kingdom"})
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Class {
+    @XmlAttribute
     private Integer id;
+    @XmlElement(name = "name")
     private String name;
+    @XmlElement(name = "name")
     private Kingdom kingdom;
 
     public Integer getId() {

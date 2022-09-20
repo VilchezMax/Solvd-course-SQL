@@ -1,10 +1,15 @@
 package db.models;
 
 
-import db.mysqldao.HealthRiskMySQLDAO;
+import javax.xml.bind.annotation.*;
 
-public class HealthRisk extends HealthRiskMySQLDAO {
+@XmlRootElement(name = "HealthRisk")
+@XmlType(propOrder = {"id", "level"})
+@XmlAccessorType(XmlAccessType.FIELD)
+public class HealthRisk {
+    @XmlAttribute
     private Integer id;
+    @XmlElement(name = "level")
     private String level;
 
     public Integer getId() {

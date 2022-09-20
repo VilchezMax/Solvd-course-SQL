@@ -1,8 +1,9 @@
-package db.mysqldao;
+package db.dao.mysqldao;
 
 import db.dao.IBaseDAO;
 import db.models.Role;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -30,6 +31,11 @@ public class RoleMySQLDAO implements IBaseDAO<Role> {
 
     @Override
     public List<Role> getAll() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public Role extractData(ResultSet result) throws SQLException {
         return null;
     }
 }
