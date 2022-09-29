@@ -1,28 +1,61 @@
-package parsing.xml.jaxb.jackson;
+package parsing.json.jackson;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.type.CollectionType;
+import db.models.Area;
+import db.models.Role;
+import db.models.Seniority;
 import db.models.Worker;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.io.File;
-import java.util.List;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.*;
 
 public class JacksonParser {
-    private static final Logger logger = LogManager.getLogger(JacksonParser.class);
 
-    public static void main(String[] args) {
 
+    public static void main(String[] args) throws IOException {
+        String path = "src/main/resources/parsing/json/worker.json";
         ObjectMapper mapper = new ObjectMapper();
+        Worker worker = new Worker();
+        worker.setId(1);
+        worker.setRole(new Role());
+        worker.setSeniority(new Seniority());
+        worker.setFirstName("Lionel");
+        worker.setLastName("Messi");
+        worker.setBirthDate(new GregorianCalendar(1994, Calendar.DECEMBER, 10).getTime());
+        worker.setIdNumber(10);
+        worker.setEmail("messi10@jaxb.com");
+        worker.setWage(1011);
+        worker.setPhd(true);
+        List<Area> areas = new ArrayList<>();
+        Area area1 = new Area();
+        area1.setId(1);
+        area1.setName("max");
+        areas.add(area1);
+        Area area2 = new Area();
+        area2.setId(2);
+        area2.setName("min");
+        areas.add(area2);
+        worker.setAreas(areas);
         try {
-            JavaType javaType = mapper.getTypeFactory().constructCollectionType(List.class, Worker.class);
-            List<Worker> workers = mapper.readValue(new File(" "))
-        } catch (JsonProcessingException e) {
-            logger.warn(e);
+            mapper.writeValue(new File(path), worker);
+            String str = JacksonParser.prettyJson(Files.readString(Path.of(path), StandardCharsets.UTF_8));
+            Files.write(Path.of(path), Collections.singleton(str), StandardCharsets.UTF_8);
+            System.out.println(str);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+//        try {
+//            JavaType javaType = mapper.getTypeFactory().constructCollectionType(List.class, Area.class);
+//            List<Area> areass = mapper.readValue(worker.getAreas().toString(), javaType); //PATH: DATA SOURCE
+//            mapper.writeValue(new File(path), areass); //PATH: DESTINATION OF PARSING
+//        } catch (IOException e) {
+//            logger.warn(e);
+//        }
 //        URL url = new URL("https://pokeapi.co/api/v2/pokemon/ditto");
 //        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 //        conn.setRequestMethod("GET");
@@ -44,7 +77,7 @@ public class JacksonParser {
 
     }
 
-    public static String stringToPrettyJson(String str) {
+    public static String prettyJson(String str) {
         try {
             ObjectMapper mapper = new ObjectMapper();
             str = mapper

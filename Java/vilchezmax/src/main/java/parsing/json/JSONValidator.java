@@ -1,2 +1,4 @@
-package parsing.json.jackson;public class JSONValidator {
+package parsing.json;
+
+public class JSONValidator {
 }
