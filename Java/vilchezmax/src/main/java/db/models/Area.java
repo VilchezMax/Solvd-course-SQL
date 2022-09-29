@@ -1,21 +1,29 @@
 package db.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import javax.xml.bind.annotation.*;
 import java.util.List;
 
+@JsonPropertyOrder({"id", "wing", "name", "description", "workers"})
 @XmlRootElement(name = "area")
 @XmlType(propOrder = {"id", "wing", "name", "description", "workers"})
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Area {
-
+    @JsonProperty
     @XmlAttribute
     private Integer id;
+    @JsonProperty
     @XmlElement(name = "wing")
     private LabWing wing;
+    @JsonProperty
     @XmlElement(name = "name")
     private String name;
+    @JsonProperty
     @XmlElement(name = "description")
     private String description;
+    @JsonProperty
     @XmlElementWrapper(name = "workers")
     @XmlElementRefs({
             @XmlElementRef(name = "worker", type = Worker.class, required = true),

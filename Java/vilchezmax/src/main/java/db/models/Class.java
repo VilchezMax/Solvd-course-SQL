@@ -1,16 +1,23 @@
 package db.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import javax.xml.bind.annotation.*;
 
+@JsonPropertyOrder({"id", "name", "kingdom"})
 @XmlRootElement(name = "class")
 @XmlType(propOrder = {"id", "name", "kingdom"})
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Class {
+    @JsonProperty
     @XmlAttribute
     private Integer id;
+    @JsonProperty
     @XmlElement(name = "name")
     private String name;
-    @XmlElement(name = "name")
+    @JsonProperty
+    @XmlElement(name = "kingdom")
     private Kingdom kingdom;
 
     public Integer getId() {

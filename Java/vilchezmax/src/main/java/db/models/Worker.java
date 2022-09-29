@@ -1,5 +1,8 @@
 package db.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import db.DateAdapter;
 
 import javax.xml.bind.annotation.*;
@@ -7,36 +10,51 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.Date;
 import java.util.List;
 
+@JsonPropertyOrder({"id", "role", "seniority", "firstName", "lastName", "idNumber", "birthDate", "email", "wage", "phd", "experiments", "areas"})
+
 @XmlRootElement(name = "worker")
 @XmlType(propOrder = {"id", "role", "seniority", "firstName", "lastName", "idNumber", "birthDate", "email", "wage", "phd", "experiments", "areas"})
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Worker {
+    @JsonProperty
     @XmlAttribute
     private Integer id;
+    @JsonProperty
     @XmlElement(name = "role")
     private Role role;
+    @JsonProperty
     @XmlElement(name = "seniority")
     private Seniority seniority;
+    @JsonProperty
     @XmlElement(name = "firstName")
     private String firstName;
+    @JsonProperty
     @XmlElement(name = "lastName")
     private String lastName;
+    @JsonProperty
     @XmlElement(name = "idNumber")
     private Integer idNumber;
+    @JsonProperty
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     @XmlJavaTypeAdapter(DateAdapter.class)
     @XmlElement(name = "birthDate")
     private Date birthDate;
+    @JsonProperty
     @XmlElement(name = "email")
     private String email;
+    @JsonProperty
     @XmlElement(name = "wage")
     private Integer wage;
+    @JsonProperty
     @XmlElement(name = "phd")
     private boolean phd;
+    @JsonProperty
     @XmlElementWrapper(name = "experiments")
     @XmlElementRefs({
             @XmlElementRef(name = "experiment", type = Experiment.class, required = true),
     })
     private List<Experiment> experiments;
+    @JsonProperty
     @XmlElementWrapper(name = "areas")
     @XmlElementRefs({
             @XmlElementRef(name = "area", type = Area.class, required = true),

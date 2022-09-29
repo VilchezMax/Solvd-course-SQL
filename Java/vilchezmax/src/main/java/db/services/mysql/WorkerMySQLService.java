@@ -16,10 +16,10 @@ public class WorkerMySQLService implements ICRUDServices<Worker> {
     AreaMySQLDAO areasMySQLDAO;
 
     @Override
-    public void create(Worker object) throws SQLException {
-        object.setExperiments(experimentsMySQLDAO.getAllByWorkerId(object.getId()));
-        object.setAreas(areasMySQLDAO.getAllByWorkerId(object.getId()));
-        workerMySQLDAO.create(object);
+    public void create(Worker worker) throws SQLException {
+        worker.setExperiments(experimentsMySQLDAO.getAllByWorkerId(worker.getId()));
+        worker.setAreas(areasMySQLDAO.getAllByWorkerId(worker.getId()));
+        workerMySQLDAO.create(worker);
     }
 
     @Override
@@ -31,7 +31,7 @@ public class WorkerMySQLService implements ICRUDServices<Worker> {
     }
 
     @Override
-    public void update(Worker object) {
+    public void update(Worker worker) {
 
     }
 
