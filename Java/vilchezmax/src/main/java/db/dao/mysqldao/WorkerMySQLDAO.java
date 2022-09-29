@@ -1,7 +1,7 @@
 package db.dao.mysqldao;
 
-import db.connection.DBConnectionPool;
 import db.dao.IBaseDAO;
+import db.jdbc.DBConnectionPool;
 import db.models.Role;
 import db.models.Seniority;
 import db.models.Worker;
@@ -15,8 +15,9 @@ public class WorkerMySQLDAO implements IBaseDAO<Worker> {
     @Override
     public void create(Worker object) throws SQLException {
         Connection connection = DBConnectionPool.getInstance().getConnection();
-        String query = "INSERT INTO Workers VALUES(?,?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO Workers VALUES(?,?,?,?,?,?,?,?,?,?)";
         int result = 0;
+
         try (PreparedStatement ps = connection.prepareStatement(query)) {
             ps.setInt(1, object.getId());
             ps.setInt(2, object.getRole().getId());
@@ -24,10 +25,10 @@ public class WorkerMySQLDAO implements IBaseDAO<Worker> {
             ps.setString(4, object.getFirstName());
             ps.setString(5, object.getLastName());
             ps.setInt(6, object.getIdNumber());
-            ps.setString(7, object.getEmail());
-            ps.setInt(8, object.getWage());
-            ps.setBoolean(9, object.isPhd());
-
+            ps.setDate(7, (Date) object.getBirthDate()); // alternative: new sql.Date(object.getBirthDate().getTime())
+            ps.setString(8, object.getEmail());
+            ps.setInt(9, object.getWage());
+            ps.setBoolean(10, object.isPhd());
 
             result = ps.executeUpdate();
         } catch (SQLException e) {
