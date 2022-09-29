@@ -1,0 +1,32 @@
+{
+  "id" : 1,
+  "role" : {
+    "id" : null,
+    "name" : null
+  },
+  "seniority" : {
+    "id" : null,
+    "name" : null
+  },
+  "firstName" : "Lionel",
+  "lastName" : "Messi",
+  "idNumber" : 10,
+  "birthDate" : "10/12/1994",
+  "email" : "messi10@jaxb.com",
+  "wage" : 1011,
+  "phd" : true,
+  "experiments" : null,
+  "areas" : [ {
+    "id" : 1,
+    "wing" : null,
+    "name" : "max",
+    "description" : null,
+    "workers" : null
+  }, {
+    "id" : 2,
+    "wing" : null,
+    "name" : "min",
+    "description" : null,
+    "workers" : null
+  } ]
+}

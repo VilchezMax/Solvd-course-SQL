@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN" name="App">
-
     <CustomLevels>
         <CustomLevel name="SUCCESS" intLevel="350"/>
     </CustomLevels>
