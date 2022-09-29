@@ -1,4 +1,4 @@
-package xmlparsing;
+package parsing.xml;
 //Source https://www.tutorialspoint.com/xsd/xsd_validation.htm
 
 import org.apache.logging.log4j.Level;
@@ -23,8 +23,8 @@ public class XSDValidator {
     private static final Logger logger = LogManager.getLogger(XSDValidator.class);
 
     public static void main(String[] args) {
-        String xsdPath = "src/main/resources/xmlparsing/classesxsd/worker.xsd";
-        String xmlPath = "src/main/resources/xmlparsing/mock.xml";
+        String xsdPath = "src/main/resources/xml/classesxsd/worker.xsd";
+        String xmlPath = "src/main/resources/xml/mock.xml";
 
         logger.info("XSD file: " + xsdPath);
         logger.info("XML file: " + xmlPath);

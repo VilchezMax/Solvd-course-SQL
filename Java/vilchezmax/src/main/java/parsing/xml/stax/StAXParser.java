@@ -1,4 +1,4 @@
-package xmlparsing.stax;
+package parsing.xml.stax;
 
 import db.models.*;
 
@@ -16,15 +16,15 @@ import java.util.Map;
 
 //Source: https://www.w3schools.blog/java-stax-xmlstreamreader-example
 
-public class StAX {
+public class StAXParser {
 
     public static void main(String[] args) {
-        //StAX.readXML("src/main/resources/xmlparsing/classes.xml");
+        //StAX.readXML("src/main/resources/xml/classes.xml");
 //        WorkerMySQLDAO workerMySQLDAO = new WorkerMySQLDAO();
 //        Worker worker = workerMySQLDAO.getById(1); //TODO CONNECTION
 
         /*MOCK WORKER*/
-        String workerPath = "src/main/resources/xmlparsing/classesxml/worker.xml";
+        String workerPath = "src/main/resources/xml/classesxml/worker.xml";
 
         try {
             XMLOutputFactory outputFactory = XMLOutputFactory.newInstance();
@@ -80,11 +80,11 @@ public class StAX {
             worker1.setExperiments(experiments);
             worker1.setAreas(areas);
 
-            StAX.pojoToXML(worker1, outputWriter);
+            StAXParser.pojoToXML(worker1, outputWriter);
             outputWriter.flush();
             outputWriter.close();
 
-            StAX.readXML(workerPath);
+            StAXParser.readXML(workerPath);
         } catch (XMLStreamException | FileNotFoundException | ParseException e) {
             e.printStackTrace();
         }

@@ -1,4 +1,4 @@
-package xmlparsing.jaxb;
+package parsing.xml.jaxb;
 
 import db.models.Area;
 import db.models.Role;
@@ -11,11 +11,13 @@ import javax.xml.bind.Marshaller;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class JAXBParser {
-    public static void main(String[] args) throws JAXBException, FileNotFoundException {
+    public static void main(String[] args) throws ParseException {
 
         Worker worker = new Worker();
         worker.setId(1);
@@ -24,6 +26,7 @@ public class JAXBParser {
         worker.setFirstName("Lionel");
         worker.setLastName("Messi");
         worker.setIdNumber(10);
+        worker.setBirthDate(new SimpleDateFormat("yyyy-MM-dd").parse("1994-12-10"));
         worker.setEmail("messi10@jaxb.com");
         worker.setWage(1011);
         worker.setPhd(true);
@@ -34,15 +37,17 @@ public class JAXBParser {
         areas.add(area);
         worker.setAreas(areas);
 
-        String toPath = "src/main/resources/xmlparsing/worker.xml";
-
-        createXmlFromWorker(worker, toPath);
-        System.out.println(getWorkerFromXml(toPath));
+        String toPath = "src/main/resources/xml/worker.xml";
+        try {
+            createXmlFromWorker(worker, toPath);
+            System.out.println(getWorkerFromXml(toPath));
+        } catch (JAXBException | FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public static Worker getWorkerFromXml(String xmlPath) throws FileNotFoundException, JAXBException {
         JAXBContext context = JAXBContext.newInstance(Worker.class);
-        System.out.println(context);
         Worker worker = (Worker) context.createUnmarshaller()
                 .unmarshal(new FileReader(xmlPath));
         return worker;
