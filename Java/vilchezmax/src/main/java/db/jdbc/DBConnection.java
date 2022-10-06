@@ -4,12 +4,9 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.time.Instant;
+import java.sql.*;
 import java.util.Properties;
 
 public class DBConnection {
@@ -17,22 +14,27 @@ public class DBConnection {
 
     Connection conn = null;
 
-    protected DBConnection(Connections connection) {
+    public DBConnection(Connections connection) {
+        Properties props = new Properties();
         try {
-            Properties props = new Properties();
-            props.load(getClass().getClassLoader().getResourceAsStream(connection.getPropertiesPath()));
+            FileInputStream propsFile = new FileInputStream("src\\main\\resources\\db.properties");
+            props.load(propsFile);
             //get Driver
             Class.forName(props.getProperty("driver"));
             // get Connection
             conn = DriverManager.getConnection(
-                    props.getProperty("protocol") + props.getProperty("host") + ":" + props.getProperty("port") + "/" + props.getProperty("dbname"),
+                    props.getProperty("url"),
                     props.getProperty("user"),
                     props.getProperty("password"));
             if (conn != null) {
                 try (PreparedStatement st = conn.prepareStatement("SELECT NOW()")) {
-                    Instant time = st.executeQuery().getDate(1).toInstant();
-                    logger.log(Level.getLevel("SUCCESS"),
-                            "Connection to " + props.getProperty("dbname") + " database was successful - " + time.toString());
+                    ResultSet rs = st.executeQuery();
+                    if (rs.next()) {
+                        Date time = rs.getDate(1);
+                        logger.log(Level.getLevel("SUCCESS"),
+                                "Connection to " + props.getProperty("dbname") +
+                                        " database was successful."); //+ Thread.currentThread().getName());
+                    }
                 } catch (SQLException e) {
                     logger.warn(e);
                 }
