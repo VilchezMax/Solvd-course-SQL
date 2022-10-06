@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Worker">
+    <resultMap type="Worker" id="WorkerResultMap">
+        <result column="name" property="releaseDate"/>
+    </resultMap>
+
+    <select id="getById" parameterType="Worker" resultMap="WorkerResultMap">
+        SELECT *
+        FROM workers
+        WHERE ID = #{id}
+    </select>
+</mapper>

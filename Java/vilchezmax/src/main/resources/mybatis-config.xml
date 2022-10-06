@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--for remote solvd db:
+    <properties resource="remotedb.properties"/> -->
+    <properties resource="db.properties"/>
+    <typeAliases>
+        <typeAlias alias="Analysis" type="db.models.Analysis"/>
+        <typeAlias alias="Area" type="db.models.Area"/>
+        <typeAlias alias="Class" type="db.models.Class"/>
+        <typeAlias alias="Experiment" type="db.models.Experiment"/>
+        <typeAlias alias="HealthRisk" type="db.models.HealthRisk"/>
+        <typeAlias alias="Kingdom" type="db.models.Kingdom"/>
+        <typeAlias alias="LabWing" type="db.models.LabWing"/>
+        <typeAlias alias="Role" type="db.models.Role"/>
+        <typeAlias alias="Sample" type="db.models.Sample"/>
+        <typeAlias alias="Seniority" type="db.models.Seniority"/>
+        <typeAlias alias="Substrate" type="db.models.Substrate"/>
+        <typeAlias alias="TestSubject" type="db.models.TestSubject"/>
+        <typeAlias alias="Tool" type="db.models.Tool"/>
+        <typeAlias alias="Worker" type="db.models.Worker"/>
+    </typeAliases>
+    <environments default="dev">
+        <environment id="dev">
+            <transactionManager type="JDBC">
+                <property name="defaultReadOnly" value="false"/>
+            </transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${protocol}:${host}:${port}/${dbname}"/>
+                <property name="username" value="${user}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="mybatis/mappers/AnalysisMapper.xml"/>
+        <mapper resource="mybatis/mappers/AreaMapper.xml"/>
+        <mapper resource="mybatis/mappers/ClassMapper.xml"/>
+        <mapper resource="mybatis/mappers/ExperimentMapper.xml"/>
+        <mapper resource="mybatis/mappers/HealthRiskMapper.xml"/>
+        <mapper resource="mybatis/mappers/KingdomMapper.xml"/>
+        <mapper resource="mybatis/mappers/LabWingMapper.xml"/>
+        <mapper resource="mybatis/mappers/RoleMapper.xml"/>
+        <mapper resource="mybatis/mappers/SampleMapper.xml"/>
+        <mapper resource="mybatis/mappers/SeniorityMapper.xml"/>
+        <mapper resource="mybatis/mappers/SubstrateMapper.xml"/>
+        <mapper resource="mybatis/mappers/TestSubjectMapper.xml"/>
+        <mapper resource="mybatis/mappers/ToolMapper.xml"/>
+        <mapper resource="mybatis/mappers/WorkerMapper.xml"/>
+    </mappers>
+</configuration>
+
