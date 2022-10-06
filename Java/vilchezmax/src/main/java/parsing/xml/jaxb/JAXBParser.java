@@ -8,6 +8,7 @@ import db.models.Worker;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -16,7 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JAXBParser {
+public class JAXBParser<T> {
     public static void main(String[] args) throws ParseException {
 
         Worker worker = new Worker();
@@ -59,5 +60,12 @@ public class JAXBParser {
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
         marshaller.marshal(worker, new File(toPath));
+    }
+
+    public static <T> T unmarshall(Class<T> clazz, String filePath) throws JAXBException {
+        JAXBContext jaxbContext = JAXBContext.newInstance(clazz);
+        Unmarshaller jaxbUnmarshall = jaxbContext.createUnmarshaller();
+
+        return (T) jaxbUnmarshall.unmarshal(new File(filePath));
     }
 }
