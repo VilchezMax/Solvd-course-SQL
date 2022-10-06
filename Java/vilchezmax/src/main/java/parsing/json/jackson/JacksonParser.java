@@ -19,7 +19,6 @@ public class JacksonParser {
 
     public static void main(String[] args) throws IOException {
         String path = "src/main/resources/parsing/json/worker.json";
-        ObjectMapper mapper = new ObjectMapper();
         Worker worker = new Worker();
         worker.setId(1);
         worker.setRole(new Role());
@@ -42,13 +41,14 @@ public class JacksonParser {
         areas.add(area2);
         worker.setAreas(areas);
         try {
-            mapper.writeValue(new File(path), worker);
-            String str = JacksonParser.prettyJson(Files.readString(Path.of(path), StandardCharsets.UTF_8));
-            Files.write(Path.of(path), Collections.singleton(str), StandardCharsets.UTF_8);
-            System.out.println(str);
-        } catch (Exception e) {
+            JacksonParser.marshall(path, worker);
+            JacksonParser.readJSONcontent(path);
+            Worker unmarshalledWorker = JacksonParser.unmarshall(path, Worker.class);
+            System.out.println(unmarshalledWorker.toString());
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
+    }
 //        try {
 //            JavaType javaType = mapper.getTypeFactory().constructCollectionType(List.class, Area.class);
 //            List<Area> areass = mapper.readValue(worker.getAreas().toString(), javaType); //PATH: DATA SOURCE
@@ -56,12 +56,6 @@ public class JacksonParser {
 //        } catch (IOException e) {
 //            logger.warn(e);
 //        }
-//        URL url = new URL("https://pokeapi.co/api/v2/pokemon/ditto");
-//        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-//        conn.setRequestMethod("GET");
-//        conn.setRequestProperty("Content-Type", "application/json");
-//        conn.setConnectTimeout(5000);
-//        conn.setReadTimeout(5000);
 //
 //        int status = conn.getResponseCode();
 //        BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -75,11 +69,32 @@ public class JacksonParser {
 //
 //        System.out.println(stringToPrettyJson(content.toString()));
 
+    public static <T> void marshall(String path, T object) {
+        ObjectMapper mapper = new ObjectMapper();
+        File file;
+        try {
+            file = new File(path);
+            mapper.writeValue(file, object);
+        } catch (IOException | NullPointerException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static <T> T unmarshall(String path, Class<T> clazz) {
+        ObjectMapper mapper = new ObjectMapper();
+        File file;
+        try {
+            file = new File(path);
+            return mapper.readValue(file, clazz);
+        } catch (IOException | NullPointerException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public static String prettyJson(String str) {
+        ObjectMapper mapper = new ObjectMapper();
         try {
-            ObjectMapper mapper = new ObjectMapper();
             str = mapper
                     .writerWithDefaultPrettyPrinter()
                     .writeValueAsString(mapper.readTree(str));
@@ -87,5 +102,17 @@ public class JacksonParser {
             e.printStackTrace();
         }
         return str;
+    }
+
+    public static void readJSONcontent(String path) {
+        String str = null;
+        try {
+            str = JacksonParser.prettyJson(Files.readString(Path.of(path), StandardCharsets.UTF_8));
+            Files.write(Path.of(path), Collections.singleton(str), StandardCharsets.UTF_8);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(path + "\n" + str);
     }
 }
