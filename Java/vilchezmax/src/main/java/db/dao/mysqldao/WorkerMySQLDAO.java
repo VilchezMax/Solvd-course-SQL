@@ -42,14 +42,15 @@ public class WorkerMySQLDAO implements IBaseDAO<Worker> {
         Connection connection = DBConnectionPool.getInstance().getConnection();
         ResultSet result = null;
         String query = "SELECT * FROM Workers WHERE id = ?";
-
+        Worker worker = null;
         try (PreparedStatement ps = connection.prepareStatement(query)) {
             ps.setInt(1, id);
             result = ps.executeQuery();
+            worker = extractData(result.next() ? result : null); /* MSJ PARA MAXI: VER NOTA DE VOZ 23.30 EN WP*
         } catch (SQLException e) {
             System.out.println(e);
         }
-        return extractData(result);
+        return worker;
     }
 
     @Override
@@ -125,6 +126,7 @@ public class WorkerMySQLDAO implements IBaseDAO<Worker> {
         worker.setPhd(result.getBoolean(9));
         //experiments?
         //areas?
+        System.out.println(worker);
         return worker;
     }
 

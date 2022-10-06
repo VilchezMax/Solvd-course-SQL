@@ -39,3 +39,11 @@
 
 1. Add MyBatis DAOs to the existing hierarchy with the same requirements. Choose any XML or interface mapping.
 2. Switch service classes to MyBatis.
+
+**SOLID/Design Patterns:**
+
+1. Apply SOLID principles to your project
+2. Apply Design patterns to your project. 2 patterns are needed:
+   Factory & Adapter.
+
+

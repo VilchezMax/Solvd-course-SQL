@@ -1,1 +1,33 @@
-<Worker Id="1"><Role Id="1"><Name>Boss</Name></Role><Seniority Id="2"><Name>Sr</Name></Seniority><FirstName>Lionel</FirstName><LastName>Messi</LastName><IdNumber>10</IdNumber><BirthDate>Sat Dec 10 00:00:00 ART 1994</BirthDate><Email>messi10@jaxb.com</Email><Wage>1011</Wage><PhD>true</PhD><Experiments><Experiment Id="1"><Name>CoViD-19 vaccine</Name></Experiment><Experiment Id="2"><Name>Eratosthenes' measurement of the Earth's circumference</Name></Experiment></Experiments><Areas><Area Id="10"><Name>area area</Name><Description>blablablah</Description></Area><Area Id="11"><Name>area 2</Name><Description>blablablahhhhhhh</Description></Area></Areas></Worker>
+<Worker Id="1">
+    <Role Id="1">
+        <Name>Boss</Name>
+    </Role>
+    <Seniority Id="2">
+        <Name>Sr</Name>
+    </Seniority>
+    <FirstName>Lionel</FirstName>
+    <LastName>Messi</LastName>
+    <IdNumber>10</IdNumber>
+    <BirthDate>Sat Dec 10 00:00:00 ART 1994</BirthDate>
+    <Email>messi10@jaxb.com</Email>
+    <Wage>1011</Wage>
+    <PhD>true</PhD>
+    <Experiments>
+        <Experiment Id="1">
+            <Name>CoViD-19 vaccine</Name>
+        </Experiment>
+        <Experiment Id="2">
+            <Name>Eratosthenes' measurement of the Earth's circumference</Name>
+        </Experiment>
+    </Experiments>
+    <Areas>
+        <Area Id="10">
+            <Name>area area</Name>
+            <Description>blablablah</Description>
+        </Area>
+        <Area Id="11">
+            <Name>area 2</Name>
+            <Description>blablablahhhhhhh</Description>
+        </Area>
+    </Areas>
+</Worker>

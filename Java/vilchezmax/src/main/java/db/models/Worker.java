@@ -11,7 +11,6 @@ import java.util.Date;
 import java.util.List;
 
 @JsonPropertyOrder({"id", "role", "seniority", "firstName", "lastName", "idNumber", "birthDate", "email", "wage", "phd", "experiments", "areas"})
-
 @XmlRootElement(name = "worker")
 @XmlType(propOrder = {"id", "role", "seniority", "firstName", "lastName", "idNumber", "birthDate", "email", "wage", "phd", "experiments", "areas"})
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -160,4 +159,21 @@ public class Worker {
         this.areas = areas;
     }
 
+    @Override
+    public String toString() {
+        return "Worker{" +
+                "id=" + id +
+                ", role=" + role +
+                ", seniority=" + seniority +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", idNumber=" + idNumber +
+                ", birthDate=" + birthDate +
+                ", email='" + email + '\'' +
+                ", wage=" + wage +
+                ", phd=" + phd +
+                ", experiments=" + experiments +
+                ", areas=" + areas +
+                '}';
+    }
 }

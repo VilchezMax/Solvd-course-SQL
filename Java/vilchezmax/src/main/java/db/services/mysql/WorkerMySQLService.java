@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class WorkerMySQLService implements ICRUDServices<Worker> {
-    WorkerMySQLDAO workerMySQLDAO;
+    WorkerMySQLDAO workerMySQLDAO = new WorkerMySQLDAO();
     ExperimentMySQLDAO experimentsMySQLDAO;
     AreaMySQLDAO areasMySQLDAO;
 
@@ -25,8 +25,9 @@ public class WorkerMySQLService implements ICRUDServices<Worker> {
     @Override
     public Worker getById(Integer id) throws SQLException {
         Worker worker = workerMySQLDAO.getById(id);
-        worker.setExperiments(experimentsMySQLDAO.getAllByWorkerId(id));
-        worker.setAreas(areasMySQLDAO.getAllByWorkerId(id));
+        System.out.println(worker);
+//        worker.setExperiments(experimentsMySQLDAO.getAllByWorkerId(id));
+//        worker.setAreas(areasMySQLDAO.getAllByWorkerId(id));
         return worker;
     }
 

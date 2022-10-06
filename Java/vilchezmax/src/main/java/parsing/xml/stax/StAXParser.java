@@ -19,7 +19,7 @@ import java.util.Map;
 public class StAXParser {
 
     public static void main(String[] args) {
-        //StAX.readXML("src/main/resources/xml/classes.xml");
+        //StAXParser.readXML("src/main/resources/xml/classes.xml");
 //        WorkerMySQLDAO workerMySQLDAO = new WorkerMySQLDAO();
 //        Worker worker = workerMySQLDAO.getById(1); //TODO CONNECTION
 
