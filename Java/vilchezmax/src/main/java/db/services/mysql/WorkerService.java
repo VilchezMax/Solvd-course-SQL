@@ -5,12 +5,12 @@ import db.dao.mysql.AreaMySQLDAO;
 import db.dao.mysql.ExperimentMySQLDAO;
 import db.dao.mysql.WorkerMySQLDAO;
 import db.models.Worker;
-import db.services.ICRUDServices;
+import db.services.ICrudServices;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public class WorkerMySQLService implements ICRUDServices<Worker> {
+public class WorkerService implements ICrudServices<Worker> {
     WorkerMySQLDAO workerMySQLDAO = new WorkerMySQLDAO();
     ExperimentMySQLDAO experimentsMySQLDAO;
     AreaMySQLDAO areasMySQLDAO;

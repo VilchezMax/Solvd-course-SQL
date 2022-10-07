@@ -1,6 +1,7 @@
-package db.dao.mysqldao;
+package db.dao.mysql;
 
-import db.dao.IBaseDAO;
+import db.dao.ICrudDAO;
+import db.dao.IExtractData;
 import db.jdbc.DBConnectionPool;
 import db.models.Role;
 import db.models.Seniority;
@@ -10,7 +11,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WorkerMySQLDAO implements IBaseDAO<Worker> {
+public class WorkerMySQLDAO implements ICrudDAO<Worker>, IExtractData<Worker> {
 
     @Override
     public void create(Worker object) throws SQLException {

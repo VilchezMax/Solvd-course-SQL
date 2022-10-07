@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Experiment">
+    <resultMap id="ExperimentResultMap"
+               type="Experiment"
+               autoMapping="false">
+        <id column="id" property="id"/>
+        <result column="experiment_name" property="name"/>
+        <result column="experiment_description" property="description"/>
+        <result column="experiment_subject" property="subject"/>
+        <result column="experiment_substrate" property="substrate"/>
+        <result column="experiment_analyses" property="analyses"/>
+        <result column="experiment_workers" property="workers"/>
+    </resultMap>
+    <sql id="experiment_columns">
+        e.id as experiment_id,
+        e.name as experiment_name,
+        e.description as experiment_description,
+        e.subject as experiment_subject,
+        e.substrate as experiment_substrate
+    </sql>
+</mapper>

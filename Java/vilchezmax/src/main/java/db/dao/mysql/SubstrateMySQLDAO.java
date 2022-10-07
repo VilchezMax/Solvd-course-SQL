@@ -1,13 +1,13 @@
-package db.dao.mysqldao;
+package db.dao.mysql;
 
-import db.dao.IBaseDAO;
+import db.dao.ICrudDAO;
 import db.models.Substrate;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class SubstrateMySQLDAO implements IBaseDAO<Substrate> {
+public class SubstrateMySQLDAO implements ICrudDAO<Substrate> {
 
     @Override
     public void create(Substrate object) throws SQLException {

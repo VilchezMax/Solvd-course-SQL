@@ -1,13 +1,13 @@
-package db.dao.mysqldao;
+package db.dao.mysql;
 
-import db.dao.IBaseDAO;
+import db.dao.ICrudDAO;
 import db.models.Tool;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class ToolMySQLDAO implements IBaseDAO<Tool> {
+public class ToolMySQLDAO implements ICrudDAO<Tool> {
 
     @Override
     public void create(Tool object) throws SQLException {

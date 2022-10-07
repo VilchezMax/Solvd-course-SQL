@@ -1,13 +1,13 @@
-package db.dao.mysqldao;
+package db.dao.mysql;
 
-import db.dao.IBaseDAO;
+import db.dao.ICrudDAO;
 import db.models.HealthRisk;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class HealthRiskMySQLDAO implements IBaseDAO<HealthRisk> {
+public class HealthRiskMySQLDAO implements ICrudDAO<HealthRisk> {
 
     @Override
     public void create(HealthRisk object) throws SQLException {

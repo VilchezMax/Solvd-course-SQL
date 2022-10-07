@@ -1,13 +1,13 @@
-package db.dao.mysqldao;
+package db.dao.mysql;
 
-import db.dao.IBaseDAO;
+import db.dao.ICrudDAO;
 import db.models.LabWing;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class LabWingMySQLDAO implements IBaseDAO<LabWing> {
+public class LabWingMySQLDAO implements ICrudDAO<LabWing> {
 
     @Override
     public void create(LabWing object) throws SQLException {

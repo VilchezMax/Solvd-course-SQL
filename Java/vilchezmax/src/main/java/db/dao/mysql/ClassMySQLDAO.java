@@ -1,12 +1,12 @@
-package db.dao.mysqldao;
+package db.dao.mysql;
 
-import db.dao.IBaseDAO;
+import db.dao.ICrudDAO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class ClassMySQLDAO implements IBaseDAO<Class> {
+public class ClassMySQLDAO implements ICrudDAO<Class> {
 
     @Override
     public void create(Class object) throws SQLException {

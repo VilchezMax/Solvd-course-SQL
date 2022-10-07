@@ -1,15 +1,15 @@
 package db.services.xml;
 
 import db.models.Worker;
-import db.services.ICRUDServices;
+import db.services.ICrudServices;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public class WorkerXMLService implements ICRUDServices<Worker> {
+public class WorkerXMLService implements ICrudServices<Worker> {
     @Override
     public void create(Worker worker) throws SQLException {
-        
+
     }
 
     @Override

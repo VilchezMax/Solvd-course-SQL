@@ -1,13 +1,13 @@
-package db.dao.mysqldao;
+package db.dao.mysql;
 
-import db.dao.IBaseDAO;
+import db.dao.ICrudDAO;
 import db.models.Seniority;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class SeniorityMySQLDAO implements IBaseDAO<Seniority> {
+public class SeniorityMySQLDAO implements ICrudDAO<Seniority> {
 
     @Override
     public void create(Seniority object) throws SQLException {

@@ -1,13 +1,13 @@
-package db.dao.mysqldao;
+package db.dao.mysql;
 
-import db.dao.IBaseDAO;
+import db.dao.ICrudDAO;
 import db.models.Analysis;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class AnalysisMySQLDAO implements IBaseDAO<Analysis> {
+public class AnalysisMySQLDAO implements ICrudDAO<Analysis> {
 
 
     @Override

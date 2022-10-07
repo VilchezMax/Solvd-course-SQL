@@ -1,13 +1,13 @@
-package db.dao.mysqldao;
+package db.dao.mysql;
 
-import db.dao.IBaseDAO;
+import db.dao.ICrudDAO;
 import db.models.Kingdom;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class KingdomMySQLDAO implements IBaseDAO<Kingdom> {
+public class KingdomMySQLDAO implements ICrudDAO<Kingdom> {
 
     @Override
     public void create(Kingdom object) throws SQLException {

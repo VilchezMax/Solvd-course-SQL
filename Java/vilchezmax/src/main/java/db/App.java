@@ -2,7 +2,7 @@ package db;
 
 import db.jdbc.DBConnectionPool;
 import db.models.Worker;
-import db.services.mysql.WorkerMySQLService;
+import db.services.mysql.WorkerService;
 
 import java.sql.SQLException;
 
@@ -13,7 +13,7 @@ public class App {
         connectionPool.getConnection();
 
         //CALL WORKER FROM WORKERMYSQLSERVICE
-        WorkerMySQLService workerMySQLService = new WorkerMySQLService();
+        WorkerService workerMySQLService = new WorkerService();
         Worker worker = workerMySQLService.getById(1);
         System.out.println(worker);
     }

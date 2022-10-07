@@ -1,4 +1,4 @@
-package db.dao.mysqldao;
+package db.dao.mysql;
 
 import db.dao.IExperimentsDAO;
 import db.jdbc.DBConnectionPool;
