@@ -1,9 +1,9 @@
 package db.services.mysql;
 
 
-import db.dao.mysqldao.AreaMySQLDAO;
-import db.dao.mysqldao.ExperimentMySQLDAO;
-import db.dao.mysqldao.WorkerMySQLDAO;
+import db.dao.mysql.AreaMySQLDAO;
+import db.dao.mysql.ExperimentMySQLDAO;
+import db.dao.mysql.WorkerMySQLDAO;
 import db.models.Worker;
 import db.services.ICRUDServices;
 
@@ -37,7 +37,7 @@ public class WorkerMySQLService implements ICRUDServices<Worker> {
     }
 
     @Override
-    public void remove(Integer id) {
+    public void remove(Integer id) throws SQLException {
         workerMySQLDAO.remove(id);
     }
 

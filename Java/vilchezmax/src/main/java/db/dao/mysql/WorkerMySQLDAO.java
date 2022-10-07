@@ -46,7 +46,7 @@ public class WorkerMySQLDAO implements IBaseDAO<Worker> {
         try (PreparedStatement ps = connection.prepareStatement(query)) {
             ps.setInt(1, id);
             result = ps.executeQuery();
-            worker = extractData(result.next() ? result : null); /* MSJ PARA MAXI: VER NOTA DE VOZ 23.30 EN WP*
+            worker = extractData(result.next() ? result : null); /* MSJ PARA MAXI: VER NOTA DE VOZ 23.30 EN WP*/
         } catch (SQLException e) {
             System.out.println(e);
         }
@@ -131,4 +131,3 @@ public class WorkerMySQLDAO implements IBaseDAO<Worker> {
     }
 
 }
-
