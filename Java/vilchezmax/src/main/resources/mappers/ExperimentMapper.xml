@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ExperimentDAO">
+    <resultMap id="ExperimentResultMap"
+               type="Experiment"
+               autoMapping="false">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <association property="subject"
+                     column="subject_id"
+                     javaType="TestSubject"
+                     resultMap="TestSubjectResultMap"
+                     columnPrefix="test_subject_"/>
+        <association property="substrate"
+                     column="substrate_id"
+                     javaType="Substrate"
+                     resultMap="SubstrateResultMap"
+                     columnPrefix="substrate_"/>
+    </resultMap>
+
+    <sql id="experiment_columns">
+        e.name as experiment_name,
+        <include refid="TestSubjectDAO.test_subject_columns"/>
+        <include refid="SubstrateDAO.substrate_columns"/>
+    </sql>
+
+    <select id="getById" resultMap="ExperimentResultMap" parameterType="int">
+        SELECT
+        <include refid="experiment_columns"/>
+        FROM experiments e
+        INNER JOIN experimentsanalyses ea ON ea.experiment_id = e.id
+        INNER JOIN substrates sb ON e.substrate_id = sb.id
+        INNER JOIN testsubjects ts ON e.subject_id = ts.id
+        INNER JOIN classes c ON ts.class_id = c.id
+        INNER JOIN kingdoms k ON c.kingdom_id = k.id
+        INNER JOIN healthrisks h ON (ts.health_risk_id = h.id) OR (sb.health_risk_id = h.id)
+        INNER JOIN analyses a ON ea.analysis_id = a.id
+        INNER JOIN samples sm ON a.sample_id = sm.id
+        INNER JOIN tools t ON sm.tool_id = t.id
+        WHERE e.id = #{id};
+    </select>
+
+    <select id="getAll" resultMap="ExperimentResultMap">
+        SELECT
+        <include refid="experiment_columns"/>
+        FROM experiments e
+        INNER JOIN experimentsanalyses ea ON ea.experiment_id = e.id
+        INNER JOIN substrates sb ON e.substrate_id = sb.id
+        INNER JOIN testsubjects ts ON e.subject_id = ts.id
+        INNER JOIN classes c ON ts.class_id = c.id
+        INNER JOIN kingdoms k ON c.kingdom_id = k.id
+        INNER JOIN healthrisks h ON (ts.health_risk_id = h.id) OR (sb.health_risk_id = h.id)
+        INNER JOIN analyses a ON ea.analysis_id = a.id
+        INNER JOIN samples sm ON a.sample_id = sm.id
+        INNER JOIN tools t ON sm.tool_id = t.id
+    </select>
+
+    <select id="getByWorkerId" parameterType="int" resultMap="ExperimentResultMap">
+        SELECT
+        <include refid="experiment_columns"/>
+        FROM workersexperiments we
+        INNER JOIN experiments e on we.experiment_id = e.id
+        INNER JOIN experimentsanalyses ea ON ea.experiment_id = e.id
+        INNER JOIN substrates sb ON e.substrate_id = sb.id
+        INNER JOIN testsubjects ts ON e.subject_id = ts.id
+        INNER JOIN classes c ON ts.class_id = c.id
+        INNER JOIN kingdoms k ON c.kingdom_id = k.id
+        INNER JOIN healthrisks h ON (ts.health_risk_id = h.id) OR (sb.health_risk_id = h.id)
+        INNER JOIN analyses a ON ea.analysis_id = a.id
+        INNER JOIN samples sm ON a.sample_id = sm.id
+        INNER JOIN tools t ON sm.tool_id = t.id
+        WHERE we.worker_id = #{id}
+    </select>
+    <insert id="create" parameterType="Experiment">
+        INSERT INTO experiments (name, subject_id, substrate_id)
+        VALUES (#{Experiment.name}, #{Experiment.subject.id}, #{Experiment.substrate.id})
+    </insert>
+    <update id="update" parameterType="Experiment">
+        UPDATE experiments e
+        SET name         = #{Experiment.name},
+            subject_id   = #{Experiment.subject.id},
+            substrate_id = #{Experiment.substrate.id}
+        WHERE e.id = #{Experiment.id}
+    </update>
+    <delete id="delete" parameterType="int">
+        DELETE
+        FROM experiments
+        WHERE id = #{id}
+    </delete>
+</mapper>

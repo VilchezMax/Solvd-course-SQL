@@ -15,9 +15,8 @@ import java.io.FileReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
 
-public class JAXBParser<T> {
+public class JAXBParser {
     public static void main(String[] args) throws ParseException {
 
         Worker worker = new Worker();
@@ -31,7 +30,7 @@ public class JAXBParser<T> {
         worker.setEmail("messi10@jaxb.com");
         worker.setWage(1011);
         worker.setPhd(true);
-        List<Area> areas = new ArrayList<>();
+        ArrayList<Area> areas = new ArrayList<>();
         Area area = new Area();
         area.setId(1);
         area.setName("max");
@@ -62,6 +61,7 @@ public class JAXBParser<T> {
         marshaller.marshal(worker, new File(toPath));
     }
 
+    @SuppressWarnings("unchecked")
     public static <T> T unmarshall(Class<T> clazz, String filePath) throws JAXBException {
         JAXBContext jaxbContext = JAXBContext.newInstance(clazz);
         Unmarshaller jaxbUnmarshall = jaxbContext.createUnmarshaller();

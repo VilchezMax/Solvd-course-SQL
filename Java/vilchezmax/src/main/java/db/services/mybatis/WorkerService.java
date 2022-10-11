@@ -1,6 +1,6 @@
 package db.services.mybatis;
 
-import db.dao.mybatis.WorkerMyBatisDAO;
+import db.dao.mybatis.WorkerDAO;
 import db.models.Worker;
 import db.services.ICrudServices;
 import org.apache.logging.log4j.LogManager;
@@ -11,7 +11,7 @@ import java.util.List;
 
 public class WorkerService implements ICrudServices<Worker> {
     final Logger LOGGER = LogManager.getLogger(WorkerService.class);
-    WorkerMyBatisDAO workerDAO = new WorkerMyBatisDAO();
+    WorkerDAO workerDAO = new WorkerDAO();
 
     @Override
     public void create(Worker worker) {
@@ -23,7 +23,7 @@ public class WorkerService implements ICrudServices<Worker> {
     }
 
     @Override
-    public Worker getById(Integer id) throws SQLException {
+    public Worker getById(Integer id) {
         Worker worker = null;
         try {
             worker = workerDAO.getById(id);

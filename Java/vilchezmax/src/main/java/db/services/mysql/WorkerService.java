@@ -1,48 +1,88 @@
 package db.services.mysql;
 
 
-import db.dao.mysql.AreaMySQLDAO;
-import db.dao.mysql.ExperimentMySQLDAO;
-import db.dao.mysql.WorkerMySQLDAO;
-import db.models.Worker;
+import db.dao.mysql.AreaDAO;
+import db.dao.mysql.ExperimentDAO;
+import db.dao.mysql.WorkerDAO;
+import db.models.*;
 import db.services.ICrudServices;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
+
 public class WorkerService implements ICrudServices<Worker> {
-    WorkerMySQLDAO workerMySQLDAO = new WorkerMySQLDAO();
-    ExperimentMySQLDAO experimentsMySQLDAO;
-    AreaMySQLDAO areasMySQLDAO;
+    private static final Logger logger = LogManager.getLogger(WorkerService.class);
+
+    private WorkerDAO workerDAO = new WorkerDAO();
+    private ExperimentDAO experimentsDAO = new ExperimentDAO();
+    private AreaDAO areasDAO = new AreaDAO();
 
     @Override
-    public void create(Worker worker) throws SQLException {
-        worker.setExperiments(experimentsMySQLDAO.getAllByWorkerId(worker.getId()));
-        worker.setAreas(areasMySQLDAO.getAllByWorkerId(worker.getId()));
-        workerMySQLDAO.create(worker);
+    public void create(Worker worker) {
+        try {
+//            worker.setExperiments(experimentsDAO.getAllByWorkerId(worker.getId()));
+//            worker.setAreas(areasDAO.getAllByWorkerId(worker.getId()));
+            workerDAO.create(worker);
+        } catch (Exception e) {
+            logger.warn(e.getMessage());
+        }
     }
 
     @Override
-    public Worker getById(Integer id) throws SQLException {
-        Worker worker = workerMySQLDAO.getById(id);
-        System.out.println(worker);
-//        worker.setExperiments(experimentsMySQLDAO.getAllByWorkerId(id));
-//        worker.setAreas(areasMySQLDAO.getAllByWorkerId(id));
+    public Worker getById(Integer id) {
+        Worker worker = null;
+        try {
+            worker = workerDAO.getById(id);
+            logger.info(worker);
+//            worker.setExperiments(experimentsDAO.getAllByWorkerId(id));
+//            worker.setAreas(areasDAO.getAllByWorkerId(id));
+        } catch (Exception e) {
+            logger.warn(e.getMessage());
+        }
         return worker;
     }
 
     @Override
     public void update(Worker worker) {
-
+        try {
+            workerDAO.update(worker);
+        } catch (Exception e) {
+            logger.warn(e.getMessage());
+        }
     }
 
     @Override
-    public void remove(Integer id) throws SQLException {
-        workerMySQLDAO.remove(id);
+    public void remove(Integer id) {
+        try {
+            workerDAO.remove(id);
+        } catch (Exception e) {
+            logger.warn(e.getMessage());
+        }
     }
 
     @Override
     public List<Worker> getAll() {
-        return null;
+        ArrayList<Worker> workers = null;
+
+        List<Experiment> experiments = null;
+        TestSubject testSubject = null;
+        Substrate substrate = null;
+
+        List<Area> areas = null;
+        LabWing labWing = null;
+        try {
+            workers = workerDAO.getAll();
+            for (Worker worker : workers) {
+
+                worker.setExperiments(experimentsDAO.getAllByWorkerId(worker.getId()));
+                worker.setAreas(areasDAO.getAllByWorkerId(worker.getId()));
+            } //TOTALLY  INEFFICIENT, BUT FIRST MAKE IT WORK.
+        } catch (Exception e) {
+            logger.warn(e.getMessage());
+        }
+        return workers;
     }
 }

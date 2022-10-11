@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="KingdomDAO">
+    <resultMap id="KingdomResultMap"
+               type="Kingdom"
+               autoMapping="false">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+    </resultMap>
+
+    <sql id="kingdom_columns">
+        name as kingdom_name
+    </sql>
+
+    <select id="getById" parameterType="int" resultMap="KingdomResultMap">
+        SELECT
+        <include refid="kingdom_columns"/>
+        FROM kingdoms k
+        WHERE ID = #{id}
+    </select>
+
+    <select id="getAll" resultMap="KingdomResultMap">
+        SELECT
+        <include refid="kingdom_columns"/>
+        FROM kingdoms k
+    </select>
+
+    <insert id="create" parameterType="Kingdom">
+        INSERT INTO kingdoms (name)
+        VALUES (#{name})
+    </insert>
+
+    <update id="update" parameterType="Kingdom">
+        UPDATE kingdoms
+        SET name = #{name}
+        WHERE id = #{Kingdom.id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        DELETE
+        FROM kingdoms
+        WHERE id = #{id}
+    </delete>
+
+</mapper>

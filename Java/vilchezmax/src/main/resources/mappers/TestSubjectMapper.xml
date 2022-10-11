@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="TestSubjectDAO">
+    <resultMap id="TestSubjectResultMap"
+               type="TestSubject"
+               autoMapping="false">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <association property="class"
+                     column="class_id"
+                     resultMap="ClassResultMap"
+                     javaType="Class"
+                     columnPrefix="class_"/>
+        <association column="health_risk_id"
+                     property="healthRisk"
+                     resultMap="HealthRiskResultMap"
+                     javaType="HealthRisk"
+                     columnPrefix="health_risk_"/>
+    </resultMap>
+
+    <sql id="test_subject_columns">
+        ts.name as test_subject_name,
+        <include refid="ClassDAO.class_columns"/>
+        <include refid="HealthRiskDAO.health_risk_columns"/>
+    </sql>
+
+    <select id="getById" parameterType="int" resultMap="TestSubjectResultMap">
+        SELECT
+        <include refid="test_subject_columns"/>
+        FROM testsubjects ts
+        INNER JOIN classes c ON ts.class_id = c.id
+        INNER JOIN kingdoms k ON c.kingdom_id = k.id
+        INNER JOIN healthrisks hr ON ts.health_risk_id = hr.id
+        WHERE ts.ID = #{id}
+    </select>
+    <select id="getAll" resultMap="TestSubjectResultMap">
+        SELECT
+        <include refid="test_subject_columns"/>
+        FROM testsubjects ts
+        INNER JOIN classes c ON ts.class_id = c.id
+        INNER JOIN kingdoms k ON c.kingdom_id = k.id
+        INNER JOIN healthrisks hr ON ts.health_risk_id = hr.id
+    </select>
+    <insert id="create" parameterType="TestSubject">
+        INSERT INTO testsubjects (name, class_id, health_risk_id)
+        VALUES (#{TestSubject.name}, #{TestSubject.clazz.id}, #{TestSubject.healthRisk.id})
+    </insert>
+    <update id="update" parameterType="TestSubject">
+        UPDATE testsubjects ts
+        SET name           = #{TestSubject.name},
+            class_id       = #{TestSubject.clazz.id},
+            health_risk_id = #{TestSubject.healthRisk.id}
+        WHERE ts.id = #{TestSubject.id}
+    </update>
+    <delete id="delete" parameterType="int">
+        DELETE
+        FROM testsubjects
+        WHERE id = #{id}
+    </delete>
+
+</mapper>

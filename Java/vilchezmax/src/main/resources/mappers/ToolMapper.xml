@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ToolDAO">
+    <resultMap id="ToolResultMap"
+               type="Tool"
+               autoMapping="false">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+    </resultMap>
+
+    <sql id="tool_columns">
+        t.name as tool_name
+    </sql>
+
+    <select id="getById" parameterType="int" resultMap="ToolResultMap">
+        SELECT
+        <include refid="tool_columns"/>
+        FROM tools t
+        WHERE ID = #{id}
+    </select>
+
+    <select id="getAll" resultMap="ToolResultMap">
+        SELECT
+        <include refid="tool_columns"/>
+        FROM tools t
+    </select>
+
+    <insert id="create" parameterType="Tool">
+        INSERT INTO tools (name)
+        VALUES (#{Tool.name})
+    </insert>
+
+    <update id="update" parameterType="Tool">
+        UPDATE tools t
+        SET name = #{Tool.name}
+        WHERE id = #{Tool.id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        DELETE
+        FROM tools
+        WHERE id = #{id}
+    </delete>
+</mapper>

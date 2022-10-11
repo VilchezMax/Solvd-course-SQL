@@ -43,4 +43,13 @@ public class Substrate {
     public void setHealthRisk(HealthRisk healthRisk) {
         this.healthRisk = healthRisk;
     }
+
+    @Override
+    public String toString() {
+        return "Substrate{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", healthRisk=" + healthRisk.toString() +
+                '}';
+    }
 }

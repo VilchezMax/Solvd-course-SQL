@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="RoleDAO">
+    <resultMap id="RoleResultMap"
+               type="Role"
+               autoMapping="false">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+    </resultMap>
+
+    <sql id="role_columns">
+        r.name as role_name
+    </sql>
+
+    <select id="getById" parameterType="int" resultMap="RoleResultMap">
+        SELECT
+        <include refid="role_columns"/>
+        FROM roles r
+        WHERE ID = #{id}
+    </select>
+
+    <select id="getAll" resultMap="RoleResultMap">
+        SELECT
+        <include refid="role_columns"/>
+        FROM roles r
+    </select>
+    <insert id="create" parameterType="Role">
+        INSERT INTO roles (name)
+        VALUES (#{Role.name})
+    </insert>
+    <update id="update" parameterType="Role">
+        UPDATE roles r
+        SET name = #{Role.name}
+        WHERE id = #{Role.id}
+    </update>
+    <delete id="delete" parameterType="int">
+        DELETE
+        FROM roles
+        WHERE id = #{id}
+    </delete>
+</mapper>

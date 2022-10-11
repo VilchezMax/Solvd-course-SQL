@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.*;
 @XmlRootElement(name = "class")
 @XmlType(propOrder = {"id", "name", "kingdom"})
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Class {
+public class Class<T> {
     @JsonProperty
     @XmlAttribute
     private Integer id;
@@ -42,5 +42,14 @@ public class Class {
 
     public void setKingdomId(Kingdom kingdom) {
         this.kingdom = kingdom;
+    }
+
+    @Override
+    public String toString() {
+        return "Class{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", kingdom=" + kingdom.toString() +
+                '}';
     }
 }

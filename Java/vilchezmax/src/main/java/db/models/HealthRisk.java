@@ -33,4 +33,12 @@ public class HealthRisk {
     public void setLevel(String level) {
         this.level = level;
     }
+
+    @Override
+    public String toString() {
+        return "HealthRisk{" +
+                "id=" + id +
+                ", level='" + level + '\'' +
+                '}';
+    }
 }

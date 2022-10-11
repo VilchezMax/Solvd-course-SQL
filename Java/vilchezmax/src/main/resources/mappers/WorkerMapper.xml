@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="WorkerDAO">
+    <resultMap id="WorkerResultMap"
+               type="Worker"
+               autoMapping="false">
+        <id column="id" property="id"/>
+
+        <result column="first_name" property="firstName"/>
+        <result column="last_name" property="lastName"/>
+        <result column="id_number" property="idNumber"/>
+        <result column="birth_date" property="birthDate"/>
+        <result column="email" property="email"/>
+        <result column="wage" property="wage"/>
+        <result column="phd" property="phd"/>
+
+        <association property="role"
+                     column="role_id"
+                     javaType="Role"
+                     resultMap="RoleResultMap"
+                     columnPrefix="role_"/>
+
+        <association property="seniority"
+                     column="seniority_id"
+                     javaType="Seniority"
+                     resultMap="SeniorityResultMap"
+                     columnPrefix="seniority_"/>
+
+        <collection property="experiments"
+                    javaType="ArrayList"
+                    ofType="Experiment"
+                    resultMap="ExperimentResultMap"
+                    columnPrefix="experiment_"/>
+
+        <collection property="areas"
+                    javaType="ArrayList"
+                    ofType="Area"
+                    resultMap="AreaResultMap"
+                    columnPrefix="area_"/>
+    </resultMap>
+
+    <sql id="worker_columns">
+        <include refid="RoleDAO.role_columns"/>
+        <include refid="SeniorityDAO.seniority_columns"/>
+        w.first_name as worker_first_name,
+        w.last_name as worker_last_name,
+        w.id_number as worker_id_number,
+        w.birth_date as worker_birth_date,
+        w.email as worker_email,
+        w.wage as worker_wage,
+        w.phd as worker_phd
+        <include refid="ExperimentDAO.experiment_columns"/>
+        <include refid="AreaDAO.area_columns"/>
+    </sql>
+
+    <select id="getById" parameterType="int" resultMap="WorkerResultMap">
+        SELECT
+        <include refid="worker_columns"/>
+        FROM workers w
+        INNER JOIN roles r ON w.role_id = r.id
+        INNER JOIN seniorities s ON w.seniority_id = s.id
+        INNER JOIN workersexperiments we ON w.id = we.worker_id
+        INNER JOIN experiments e ON w.id = we.worker_id
+        INNER JOIN workersareas wa on w.id = wa.worker_id
+        INNER JOIN areas a on a.id = wa.area_id
+        WHERE w.id = #{id}
+    </select>
+
+    <select id="getAll" resultMap="WorkerResultMap">
+        SELECT
+        <include refid="worker_columns"/>
+        FROM workers w
+        INNER JOIN roles r ON w.role_id = r.id
+        INNER JOIN seniorities s ON w.seniority_id = s.id
+        INNER JOIN workersexperiments we ON w.id = we.worker_id
+        INNER JOIN experiments e ON w.id = we.worker_id
+        INNER JOIN workersareas wa on w.id = wa.worker_id
+        INNER JOIN areas a on a.id = wa.area_id
+    </select>
+
+    <insert id="create"
+            useGeneratedKeys="true"
+            keyProperty="id"
+            parameterType="Worker">
+        INSERT INTO workers (role_id, seniority_id, first_name, last_name,
+                             id_number, birth_date, email, wage, phd)
+        VALUES (#{Worker.role.id}, #{Worker.seniority.id}, #{Worker.firstName}, #{Worker.lastName},
+                #{Worker.idNumber}, #{Worker.birthDate}, #{Worker.email}, #{Worker.wage}, #{Worker.phd})
+    </insert>
+
+    <update id="update" parameterType="Worker">
+        UPDATE workers
+        SET role_id      = #{Worker.role.id},
+            seniority_id = #{Worker.seniority.id},
+            first_name   = #{Worker.firstName},
+            last_name    = #{Worker.lastName},
+            id_number    = #{Worker.idNumber},
+            birth_date   = #{Worker.birthDate},
+            email        = #{Worker.email},
+            wage         = #{Worker.wage},
+            phd          = #{Worker.phd}
+        WHERE id = #{Worker.id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        DELETE
+        FROM workers
+        WHERE id = #{id}
+    </delete>
+</mapper>

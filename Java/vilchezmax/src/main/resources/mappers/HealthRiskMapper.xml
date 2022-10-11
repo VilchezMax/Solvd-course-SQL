@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="HealthRiskDAO">
+    <resultMap id="HealthRiskResultMap"
+               type="HealthRisk"
+               autoMapping="false">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+    </resultMap>
+
+    <sql id="health_risk_columns">
+        hr.name as health_risk_name
+    </sql>
+
+    <select id="getById" parameterType="int" resultMap="HealthRiskResultMap">
+        SELECT
+        <include refid="health_risk_columns"/>
+        FROM healthrisks hr
+        WHERE ID = #{id}
+    </select>
+    <select id="getAll" resultMap="HealthRiskResultMap">
+        SELECT
+        <include refid="health_risk_columns"/>
+        FROM healthrisks hr
+    </select>
+    <insert id="create" parameterType="HealthRisk">
+        INSERT INTO healthrisks (name)
+        VALUES (#{name})
+    </insert>
+    <update id="update" parameterType="HealthRisk">
+        UPDATE healthrisks
+        SET name = #{HealthRisk.name}
+        WHERE id = #{HealthRisk.id}
+    </update>
+    <delete id="delete" parameterType="int">
+        DELETE
+        FROM healthrisks
+        WHERE id = #{id}
+    </delete>
+</mapper>

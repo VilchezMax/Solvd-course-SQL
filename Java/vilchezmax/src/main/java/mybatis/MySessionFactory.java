@@ -3,6 +3,8 @@ package mybatis;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -11,14 +13,16 @@ public class MySessionFactory {
     private static MySessionFactory instance;
     private static SqlSessionFactory factory;
 
+    private final Logger logger = LogManager.getLogger(MySessionFactory.class);
+
     private MySessionFactory() {
-        String config = "mybatis-config.xml";
+        String configFile = "mybatis-config.xml";
         Reader configReader = null;
         try {
-            configReader = Resources.getResourceAsReader(config);
+            configReader = Resources.getResourceAsReader(configFile);
             factory = new SqlSessionFactoryBuilder().build(configReader);
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            logger.warn(e.getMessage());
         }
     }
 
@@ -32,11 +36,4 @@ public class MySessionFactory {
     public SqlSessionFactory getFactory() {
         return factory;
     }
-//    public static void main(String[] args) throws IOException {
-//        String resource = "src/main/resources/mybatis/mybatis-config.xml";
-//        InputStream inputStream = Resources.getResourceAsStream(resource);
-//        MySQLSessionFactory sqlSessionFactory =
-//                (MySQLSessionFactory) new SqlSessionFactoryBuilder().build(inputStream);
-//    }
-
 }

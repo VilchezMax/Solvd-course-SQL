@@ -17,7 +17,7 @@ public class DBConnection {
     public DBConnection(Connections connection) {
         Properties props = new Properties();
         try {
-            FileInputStream propsFile = new FileInputStream("src\\main\\resources\\db.properties");
+            FileInputStream propsFile = new FileInputStream(connection.value());
             props.load(propsFile);
             //get Driver
             Class.forName(props.getProperty("driver"));
@@ -51,6 +51,7 @@ public class DBConnection {
 
     public void closeConnection() {
         try {
+            logger.info("Closing connection to database.");
             conn.close();
         } catch (SQLException e) {
             logger.warn(e);

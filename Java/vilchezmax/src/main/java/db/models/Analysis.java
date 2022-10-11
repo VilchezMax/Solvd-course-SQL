@@ -59,4 +59,14 @@ public class Analysis {
     public void setExperiments(List<Experiment> experiments) {
         this.experiments = experiments;
     }
+
+    @Override
+    public String toString() {
+        return "Analysis{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", sample=" + sample.toString() +
+                ", experiments=" + experiments.toString() +
+                '}';
+    }
 }

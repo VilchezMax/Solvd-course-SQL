@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.*;
 @XmlRootElement(name = "subject")
 @XmlType(propOrder = {"id", "name", "clazz", "healthRisk"})
 @XmlAccessorType(XmlAccessType.FIELD)
-public class TestSubject {
+public class TestSubject<T> {
     @JsonProperty
     @XmlAttribute
     private Integer id;
@@ -17,7 +17,7 @@ public class TestSubject {
     @XmlElement(name = "name")
     private String name;
     @JsonProperty
-    @XmlElement(name = "clazz")
+    @XmlElement(name = "class")
     private Class clazz;
     @JsonProperty
     @XmlElement(name = "healthRisk")
@@ -53,5 +53,15 @@ public class TestSubject {
 
     public void setHealthRisk(HealthRisk healthRisk) {
         this.healthRisk = healthRisk;
+    }
+
+    @Override
+    public String toString() {
+        return "TestSubject{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", clazz=" + clazz.toString() +
+                ", healthRisk=" + healthRisk.toString() +
+                '}';
     }
 }

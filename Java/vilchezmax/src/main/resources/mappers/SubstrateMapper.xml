@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SubstrateDAO">
+    <resultMap id="ResultMap"
+               type="Substrate"
+               autoMapping="false">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <association property="healthRisk"
+                     column="health_risk_id"
+                     javaType="HealthRisk"
+                     resultMap="HealthRiskResultMap"
+                     columnPrefix="health_risk_"/>
+
+    </resultMap>
+
+    <sql id="substrate_columns">
+        s.name as substrate_name
+        <include refid="HealthRiskDAO.health_risk_columns"/>
+    </sql>
+    <select id="getById" parameterType="int" resultMap="ResultMap">
+        SELECT
+        <include refid="substrate_columns"/>
+        FROM substrates sb
+        WHERE ID = #{id}
+    </select>
+    <select id="getAll" resultMap="ResultMap">
+        SELECT
+        <include refid="substrate_columns"/>
+        FROM substrates sb
+    </select>
+    <insert id="create" parameterType="Substrate">
+        INSERT INTO substrates (name, health_risk_id)
+        VALUES (#{Substrate.name}, #{Substrate.healthRisk.id})
+    </insert>
+    <update id="update" parameterType="OBJECT">
+        UPDATE substrates sb
+        SET name           = #{Substrate.name},
+            health_risk_id = #{Substrate.healthRisk.id}
+        WHERE id = #{Substrate.id}
+    </update>
+    <delete id="delete" parameterType="int">
+        DELETE
+        FROM substrates
+        WHERE id = #{id}
+    </delete>
+</mapper>

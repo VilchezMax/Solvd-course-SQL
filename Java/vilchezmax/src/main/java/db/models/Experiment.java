@@ -84,4 +84,16 @@ public class Experiment {
     public void setWorkers(List<Worker> workers) {
         this.workers = workers;
     }
+
+    @Override
+    public String toString() {
+        return "Experiment{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", subject=" + subject.toString() +
+                ", substrate=" + substrate.toString() +
+                ", analyses=" + analyses.toString() +
+                ", workers=" + workers.toString() +
+                '}';
+    }
 }

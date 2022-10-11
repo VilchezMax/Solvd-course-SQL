@@ -7,8 +7,8 @@ import db.DateAdapter;
 
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @JsonPropertyOrder({"id", "role", "seniority", "firstName", "lastName", "idNumber", "birthDate", "email", "wage", "phd", "experiments", "areas"})
 @XmlRootElement(name = "worker")
@@ -52,13 +52,13 @@ public class Worker {
     @XmlElementRefs({
             @XmlElementRef(name = "experiment", type = Experiment.class, required = true),
     })
-    private List<Experiment> experiments;
+    private ArrayList<Experiment> experiments;
     @JsonProperty
     @XmlElementWrapper(name = "areas")
     @XmlElementRefs({
             @XmlElementRef(name = "area", type = Area.class, required = true),
     })
-    private List<Area> areas;
+    private ArrayList<Area> areas;
 
     public Integer getId() {
         return id;
@@ -143,19 +143,19 @@ public class Worker {
         this.phd = phd;
     }
 
-    public List<Experiment> getExperiments() {
+    public ArrayList<Experiment> getExperiments() {
         return experiments;
     }
 
-    public void setExperiments(List<Experiment> experiments) {
+    public void setExperiments(ArrayList<Experiment> experiments) {
         this.experiments = experiments;
     }
 
-    public List<Area> getAreas() {
+    public ArrayList<Area> getAreas() {
         return areas;
     }
 
-    public void setAreas(List<Area> areas) {
+    public void setAreas(ArrayList<Area> areas) {
         this.areas = areas;
     }
 
@@ -163,8 +163,8 @@ public class Worker {
     public String toString() {
         return "Worker{" +
                 "id=" + id +
-                ", role=" + role +
-                ", seniority=" + seniority +
+//                ", role=" + role.toString() +
+//                ", seniority=" + seniority.toString() +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", idNumber=" + idNumber +
@@ -172,8 +172,8 @@ public class Worker {
                 ", email='" + email + '\'' +
                 ", wage=" + wage +
                 ", phd=" + phd +
-                ", experiments=" + experiments +
-                ", areas=" + areas +
+//                ", experiments=" + experiments.toString() +
+//                ", areas=" + areas.toString() +
                 '}';
     }
 }

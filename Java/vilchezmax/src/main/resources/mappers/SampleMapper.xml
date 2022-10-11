@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SampleDAO">
+    <resultMap id="SampleResultMap"
+               type="Sample"
+               autoMapping="false">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <association property="tool"
+                     column="tool_id"
+                     resultMap="ToolResultMap"
+                     javaType="Tool"
+                     columnPrefix="tool_"/>
+    </resultMap>
+
+    <sql id="sample_columns">
+        sm.name as sample_name
+        <include refid="ToolDAO.tool_columns"/>
+    </sql>
+
+    <select id="getById" parameterType="int" resultMap="SampleResultMap">
+        SELECT
+        <include refid="sample_columns"/>
+        FROM samples sm
+        INNER JOIN tools t ON sm.tool_id = t.id
+        WHERE sm.id = #{id}
+    </select>
+    <select id="getAll" resultMap="SampleResultMap">
+        SELECT *
+        FROM samples sm
+                 INNER JOIN tools t ON sm.tool_id = t.id
+    </select>
+
+    <insert id="create" parameterType="Sample">
+        INSERT INTO samples (name, tool_id)
+        VALUES (#{Sample.name}, #{Sample.tool.id})
+    </insert>
+
+    <update id="update" parameterType="Sample">
+        UPDATE samples sm
+        SET name    = #{Sample.name},
+            tool_id = #{Sample.tool.id}
+        WHERE sm.id = #{Sample.id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        DELETE
+        FROM samples
+        WHERE id = #{id}
+    </delete>
+</mapper>

@@ -43,4 +43,13 @@ public class Sample {
     public void setTool(Tool tool) {
         this.tool = tool;
     }
+
+    @Override
+    public String toString() {
+        return "Sample{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", tool=" + tool.toString() +
+                '}';
+    }
 }

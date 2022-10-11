@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ClassDAO">
+    <resultMap id="ClassResultMap"
+               type="Class"
+               autoMapping="false">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <association column="kingdom_id"
+                     property="kingdom"
+                     resultMap="KingdomResultMap"
+                     columnPrefix="kingdom_"/>
+    </resultMap>
+
+    <sql id="class_columns">
+        c.name as class_name,
+        <include refid="KingdomDAO.kingdom_columns"/>
+    </sql>
+
+    <select id="getById" parameterType="int" resultMap="ClassResultMap">
+        SELECT
+        <include refid="class_columns"/>
+        FROM classes c
+        INNER JOIN kingdoms k on c.kingdom_id = k.id
+        WHERE ID = #{id}
+    </select>
+
+    <select id="getAll" resultMap="ClassResultMap">
+        SELECT
+        <include refid="class_columns"/>
+        FROM classes c
+        INNER JOIN kingdoms k on c.kingdom_id = k.id
+    </select>
+
+    <insert id="create" parameterType="Class">
+        INSERT INTO classes (name, kingdom_id)
+        VALUES (#{name}, #{kingdom_id})
+    </insert>
+
+    <update id="update" parameterType="Class">
+        UPDATE classes
+        SET name       = #{name},
+            kingdom_id = #{kingdom_id}
+        WHERE id = #{Class.id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        DELETE
+        FROM classes
+        WHERE id = #{id}
+    </delete>
+</mapper>

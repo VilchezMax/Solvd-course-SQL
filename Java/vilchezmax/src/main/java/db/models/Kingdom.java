@@ -32,4 +32,12 @@ public class Kingdom {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "Kingdom{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

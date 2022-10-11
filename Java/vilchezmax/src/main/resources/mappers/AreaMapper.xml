@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AreaDAO">
+    <resultMap id="AreaResultMap"
+               type="Area"
+               autoMapping="false">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="description" property="description"/>
+        <association column="labwing_id"
+                     property="labwing"
+                     resultMap="LabWingResultMap"
+                     columnPrefix="labwing_"/>
+    </resultMap>
+
+    <sql id="area_columns">
+        <include refid="LabWingDAO.labwing_columns"/>
+        a.name as area_name,
+        a.description as area_description
+    </sql>
+
+    <select id="getById" parameterType="int" resultMap="AreaResultMap">
+        SELECT
+        <include refid="area_columns"/>
+        FROM areas
+        INNER JOIN labwings l on areas.wing_id = l.id
+        WHERE ID = #{id}
+    </select>
+
+    <select id="getAll" resultMap="AreaResultMap">
+        SELECT
+        <include refid="area_columns"/>
+        FROM areas
+        INNER JOIN labwings l on areas.wing_id = l.id
+    </select>
+
+    <select id="getByWorkerId" parameterType="int" resultMap="AreaResultMap">
+        SELECT
+        <include refid="area_columns"/>
+        FROM areas a
+        INNER JOIN labwings l on a.wing_id = l.id
+        INNER JOIN workersareas w on a.id = w.area_id
+        WHERE a.ID = #{id}
+    </select>
+
+    <insert id="create" parameterType="Area">
+        INSERT INTO areas (wing_id, name, description)
+        VALUES (#{Area.wing.id}, #{Area.name}, #{Area.description})
+    </insert>
+
+    <update id="update" parameterType="Area">
+        UPDATE areas a
+        SET a.wing_id     = #{Area.wing.id},
+            a.name        = #{Area.name},
+            a.description = #{Area.description}
+        WHERE id = #{Area.id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        DELETE
+        FROM areas
+        WHERE id = #{id}
+    </delete>
+</mapper>

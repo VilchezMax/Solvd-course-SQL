@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SeniorityDAO">
+    <resultMap id="SeniorityResultMap"
+               type="Seniority"
+               autoMapping="false">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+    </resultMap>
+
+    <sql id="seniority_columns">
+        s.name as role_name
+    </sql>
+
+    <select id="getById" parameterType="int" resultMap="SeniorityResultMap">
+        SELECT
+        <include refid="seniority_columns"/>
+        FROM seniorities s
+        WHERE ID = #{id}
+    </select>
+
+    <select id="getAll" resultMap="SeniorityResultMap">
+        SELECT
+        <include refid="seniority_columns"/>
+        FROM seniorities s
+    </select>
+
+    <insert id="create" parameterType="Seniority">
+        INSERT INTO seniorities (name)
+        VALUES (#{Seniority.name})
+    </insert>
+
+    <update id="update" parameterType="Seniority">
+        UPDATE seniorities s
+        SET name = #{Seniority.name}
+        WHERE s.id = #{Seniority.id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        DELETE
+        FROM seniorities
+        WHERE id = #{id}
+    </delete>
+</mapper>

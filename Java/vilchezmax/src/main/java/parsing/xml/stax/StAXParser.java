@@ -11,7 +11,6 @@ import java.io.Reader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 //Source: https://www.w3schools.blog/java-stax-xmlstreamreader-example
@@ -48,7 +47,7 @@ public class StAXParser {
             exp2.setId(2);
             exp2.setName("Eratosthenes' measurement of the Earth's circumference");
 
-            List<Experiment> experiments = new ArrayList<>();
+            ArrayList<Experiment> experiments = new ArrayList<>();
             experiments.add(exp1);
             experiments.add(exp2);
 
@@ -62,7 +61,7 @@ public class StAXParser {
             area2.setDescription("blablablahhhhhhh");
             area2.setName("area 2");
 
-            List<Area> areas = new ArrayList<>();
+            ArrayList<Area> areas = new ArrayList<>();
             areas.add(area1);
             areas.add(area2);
 

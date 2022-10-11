@@ -69,4 +69,15 @@ public class Area {
     public void setWorkers(List<Worker> workers) {
         this.workers = workers;
     }
+
+    @Override
+    public String toString() {
+        return "Area{" +
+                "id=" + id +
+                ", wing=" + wing.toString() +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", workers=" + workers.toString() +
+                '}';
+    }
 }

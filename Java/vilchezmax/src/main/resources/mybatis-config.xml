@@ -21,6 +21,22 @@
         <typeAlias alias="TestSubject" type="db.models.TestSubject"/>
         <typeAlias alias="Tool" type="db.models.Tool"/>
         <typeAlias alias="Worker" type="db.models.Worker"/>
+
+        <typeAlias alias="AnalysisDAO" type="db.dao.IAnalysisDAO"/>
+        <typeAlias alias="AreaDAO" type="db.dao.IAreaDAO"/>
+        <typeAlias alias="ClassDAO" type="db.dao.IClassDAO"/>
+        <typeAlias alias="ExperimentDAO" type="db.dao.IExperimentDAO"/>
+        <typeAlias alias="HealthRiskDAO" type="db.dao.IHealthRiskDAO"/>
+        <typeAlias alias="KingdomDAO" type="db.dao.IKingdomDAO"/>
+        <typeAlias alias="LabWingDAO" type="db.dao.ILabWingDAO"/>
+        <typeAlias alias="RoleDAO" type="db.dao.IRoleDAO"/>
+        <typeAlias alias="SampleDAO" type="db.dao.ISampleDAO"/>
+        <typeAlias alias="SeniorityDAO" type="db.dao.ISeniorityDAO"/>
+        <typeAlias alias="SubstrateDAO" type="db.dao.ISubstrateDAO"/>
+        <typeAlias alias="TestSubjectDAO" type="db.dao.ITestSubjectDAO"/>
+        <typeAlias alias="ToolDAO" type="db.dao.IToolDAO"/>
+        <typeAlias alias="WorkerDAO" type="db.dao.IWorkerDAO"/>
+
     </typeAliases>
     <environments default="dev">
         <environment id="dev">
@@ -36,20 +52,20 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="mybatis/mappers/AnalysisMapper.xml"/>
-        <mapper resource="mybatis/mappers/AreaMapper.xml"/>
-        <mapper resource="mybatis/mappers/ClassMapper.xml"/>
-        <mapper resource="mybatis/mappers/ExperimentMapper.xml"/>
-        <mapper resource="mybatis/mappers/HealthRiskMapper.xml"/>
-        <mapper resource="mybatis/mappers/KingdomMapper.xml"/>
-        <mapper resource="mybatis/mappers/LabWingMapper.xml"/>
-        <mapper resource="mybatis/mappers/RoleMapper.xml"/>
-        <mapper resource="mybatis/mappers/SampleMapper.xml"/>
-        <mapper resource="mybatis/mappers/SeniorityMapper.xml"/>
-        <mapper resource="mybatis/mappers/SubstrateMapper.xml"/>
-        <mapper resource="mybatis/mappers/TestSubjectMapper.xml"/>
-        <mapper resource="mybatis/mappers/ToolMapper.xml"/>
-        <mapper resource="mybatis/mappers/WorkerMapper.xml"/>
+        <mapper resource="mappers/AnalysisMapper.xml"/>
+        <mapper resource="mappers/AreaMapper.xml"/>
+        <mapper resource="mappers/ClassMapper.xml"/>
+        <mapper resource="mappers/ExperimentMapper.xml"/>
+        <mapper resource="mappers/HealthRiskMapper.xml"/>
+        <mapper resource="mappers/KingdomMapper.xml"/>
+        <mapper resource="mappers/LabWingMapper.xml"/>
+        <mapper resource="mappers/RoleMapper.xml"/>
+        <mapper resource="mappers/SampleMapper.xml"/>
+        <mapper resource="mappers/SeniorityMapper.xml"/>
+        <mapper resource="mappers/SubstrateMapper.xml"/>
+        <mapper resource="mappers/TestSubjectMapper.xml"/>
+        <mapper resource="mappers/ToolMapper.xml"/>
+        <mapper resource="mappers/WorkerMapper.xml"/>
     </mappers>
 </configuration>
 

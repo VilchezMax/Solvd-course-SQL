@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="LabWingDAO">
+    <resultMap id="LabWingResultMap"
+               type="LabWing"
+               autoMapping="false">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+    </resultMap>
+
+    <sql id="labwing_columns">
+        l.name as labwing_name
+    </sql>
+
+    <select id="getById" parameterType="int" resultMap="LabWingResultMap">
+        SELECT
+        <include refid="labwing_columns"/>
+        FROM labwings l
+        WHERE ID = #{id}
+    </select>
+
+    <select id="getAll" resultMap="LabWingResultMap">
+        SELECT
+        <include refid="labwing_columns"/>
+        FROM labwings l
+    </select>
+
+    <insert id="create" parameterType="LabWing">
+        INSERT INTO labwings (name)
+        VALUES (#{LabWing.name})
+    </insert>
+
+    <update id="update" parameterType="LabWing">
+        UPDATE labwings l
+        SET name = #{LabWing.name}
+        WHERE id = #{LabWing.id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        DELETE
+        FROM labwings
+        WHERE id = #{id}
+    </delete>
+</mapper>

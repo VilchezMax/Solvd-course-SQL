@@ -6,7 +6,6 @@ import org.apache.logging.log4j.Logger;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 import java.util.concurrent.BlockingQueue;
 
 // CREATE thread safe CONNECTION POOL with resources configuration
@@ -25,10 +24,11 @@ public class DBConnectionPool {
     }
 
     private void initPool() {
-        Properties props = new Properties();
         try {
-            for (int i = 0; i < poolSize; i++) {
-                availableConnections.add(new DBConnection(CONNECTION_SOURCE));
+            for (int i = 1; i <= poolSize; i++) {
+                logger.info("Creating connection " + i);
+                DBConnection conn = new DBConnection(CONNECTION_SOURCE);
+                availableConnections.add(conn);
             }
             logger.info("Connection pool was initialized.");
         } catch (Exception e) {

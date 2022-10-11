@@ -13,7 +13,6 @@ import javax.xml.stream.XMLStreamReader;
 import javax.xml.transform.stax.StAXSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
-import javax.xml.validation.Validator;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -42,7 +41,7 @@ public class XSDValidator {
             SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
             Schema xsd = factory.newSchema(new File(xsdPath));
 
-            Validator validator = xsd.newValidator();
+            javax.xml.validation.Validator validator = xsd.newValidator();
             validator.validate(new StAXSource(reader));
         } catch (IOException | SAXException | XMLStreamException e) {
             e.printStackTrace();
@@ -50,8 +49,8 @@ public class XSDValidator {
         }
         return true;
     }
-
-    /*public static boolean saxValidator(String xsdPath, String xmlPath) {
+/*
+    public static boolean saxValidator(String xsdPath, String xmlPath) {
         try {
             SchemaFactory xsdFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_INSTANCE_NS_URI);
             Schema xsd = xsdFactory.newSchema(new File(xsdPath));

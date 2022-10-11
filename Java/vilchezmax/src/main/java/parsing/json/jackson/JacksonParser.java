@@ -12,7 +12,10 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.GregorianCalendar;
 
 public class JacksonParser {
 
@@ -30,7 +33,7 @@ public class JacksonParser {
         worker.setEmail("messi10@jaxb.com");
         worker.setWage(1011);
         worker.setPhd(true);
-        List<Area> areas = new ArrayList<>();
+        ArrayList<Area> areas = new ArrayList<>();
         Area area1 = new Area();
         area1.setId(1);
         area1.setName("max");
@@ -41,35 +44,16 @@ public class JacksonParser {
         areas.add(area2);
         worker.setAreas(areas);
         try {
-            JacksonParser.marshall(path, worker);
+            JacksonParser.marshal(path, worker);
             JacksonParser.readJSONcontent(path);
-            Worker unmarshalledWorker = JacksonParser.unmarshall(path, Worker.class);
+            Worker unmarshalledWorker = JacksonParser.unmarshal(path, Worker.class);
             System.out.println(unmarshalledWorker.toString());
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
     }
-//        try {
-//            JavaType javaType = mapper.getTypeFactory().constructCollectionType(List.class, Area.class);
-//            List<Area> areass = mapper.readValue(worker.getAreas().toString(), javaType); //PATH: DATA SOURCE
-//            mapper.writeValue(new File(path), areass); //PATH: DESTINATION OF PARSING
-//        } catch (IOException e) {
-//            logger.warn(e);
-//        }
-//
-//        int status = conn.getResponseCode();
-//        BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-//        StringBuilder content = new StringBuilder();
-//        String inputLine;
-//
-//        while ((inputLine = in.readLine()) != null) {
-//            content.append(inputLine);
-//        }
-//        in.close();
-//
-//        System.out.println(stringToPrettyJson(content.toString()));
 
-    public static <T> void marshall(String path, T object) {
+    public static <T> void marshal(String path, T object) {
         ObjectMapper mapper = new ObjectMapper();
         File file;
         try {
@@ -80,7 +64,7 @@ public class JacksonParser {
         }
     }
 
-    public static <T> T unmarshall(String path, Class<T> clazz) {
+    public static <T> T unmarshal(String path, Class<T> clazz) {
         ObjectMapper mapper = new ObjectMapper();
         File file;
         try {
