@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="db.dao.AnalysisDAO">
+<mapper namespace="db.dao.IAnalysisDAO">
     <resultMap id="AnalysisResultMap"
                type="Analysis"
                autoMapping="false">
@@ -25,7 +25,7 @@
         FROM analyses a
         INNER JOIN samples s ON a.sample_id = s.id
         INNER JOIN tools t ON s.tool_id = t.id
-        WHERE ID = #{id}
+        WHERE a.id = #{id}
     </select>
 
     <select id="getAll" resultMap="AnalysisResultMap">

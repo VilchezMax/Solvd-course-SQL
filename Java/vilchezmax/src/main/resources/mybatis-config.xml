@@ -7,34 +7,20 @@
     <properties resource="remotedb.properties"/> -->
     <properties resource="db.properties"/>
     <typeAliases>
-        <typeAlias alias="Analysis" type="db.models.Analysis"/>
-        <typeAlias alias="Area" type="db.models.Area"/>
-        <typeAlias alias="Class" type="db.models.Class"/>
-        <typeAlias alias="Experiment" type="db.models.Experiment"/>
-        <typeAlias alias="HealthRisk" type="db.models.HealthRisk"/>
-        <typeAlias alias="Kingdom" type="db.models.Kingdom"/>
-        <typeAlias alias="LabWing" type="db.models.LabWing"/>
-        <typeAlias alias="Role" type="db.models.Role"/>
-        <typeAlias alias="Sample" type="db.models.Sample"/>
-        <typeAlias alias="Seniority" type="db.models.Seniority"/>
-        <typeAlias alias="Substrate" type="db.models.Substrate"/>
+        <typeAlias alias="Analysis"    type="db.models.Analysis"/>
+        <typeAlias alias="Area"        type="db.models.Area"/>
+        <typeAlias alias="Class"       type="db.models.Class"/>
+        <typeAlias alias="Experiment"  type="db.models.Experiment"/>
+        <typeAlias alias="HealthRisk"  type="db.models.HealthRisk"/>
+        <typeAlias alias="Kingdom"     type="db.models.Kingdom"/>
+        <typeAlias alias="LabWing"     type="db.models.LabWing"/>
+        <typeAlias alias="Role"        type="db.models.Role"/>
+        <typeAlias alias="Sample"      type="db.models.Sample"/>
+        <typeAlias alias="Seniority"   type="db.models.Seniority"/>
+        <typeAlias alias="Substrate"   type="db.models.Substrate"/>
         <typeAlias alias="TestSubject" type="db.models.TestSubject"/>
-        <typeAlias alias="Tool" type="db.models.Tool"/>
-        <typeAlias alias="Worker" type="db.models.Worker"/>
-
-        <typeAlias alias="AreaDAO" type="db.dao.IAreaDAO"/>
-        <typeAlias alias="ClassDAO" type="db.dao.IClassDAO"/>
-        <typeAlias alias="ExperimentDAO" type="db.dao.IExperimentDAO"/>
-        <typeAlias alias="HealthRiskDAO" type="db.dao.IHealthRiskDAO"/>
-        <typeAlias alias="KingdomDAO" type="db.dao.IKingdomDAO"/>
-        <typeAlias alias="LabWingDAO" type="db.dao.ILabWingDAO"/>
-        <typeAlias alias="RoleDAO" type="db.dao.IRoleDAO"/>
-        <typeAlias alias="SampleDAO" type="db.dao.ISampleDAO"/>
-        <typeAlias alias="SeniorityDAO" type="db.dao.ISeniorityDAO"/>
-        <typeAlias alias="SubstrateDAO" type="db.dao.ISubstrateDAO"/>
-        <typeAlias alias="TestSubjectDAO" type="db.dao.ITestSubjectDAO"/>
-        <typeAlias alias="ToolDAO" type="db.dao.IToolDAO"/>
-        <typeAlias alias="WorkerDAO" type="db.dao.IWorkerDAO"/>
+        <typeAlias alias="Tool"        type="db.models.Tool"/>
+        <typeAlias alias="Worker"      type="db.models.Worker"/>
 
     </typeAliases>
     <environments default="dev">
@@ -43,8 +29,8 @@
                 <property name="defaultReadOnly" value="false"/>
             </transactionManager>
             <dataSource type="POOLED">
-                <property name="driver" value="${driver}"/>
-                <property name="url" value="${url}"/>
+                <property name="driver"   value="${driver}"/>
+                <property name="url"      value="${url}"/>
                 <property name="username" value="${user}"/>
                 <property name="password" value="${password}"/>
             </dataSource>

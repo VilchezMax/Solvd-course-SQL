@@ -1,19 +1,20 @@
 package db.dao;
 
 import db.models.Worker;
+import org.apache.ibatis.annotations.Param;
 
 import java.sql.SQLException;
 import java.util.List;
 
 public interface IWorkerDAO extends ICrudDAO<Worker> {
     @Override
-    void create(Worker object) throws SQLException;
+    void create(@Param("Worker")Worker object) throws SQLException;
 
     @Override
-    Worker getById(Integer id) throws SQLException;
+    Worker getById(@Param("id")Integer id) throws SQLException;
 
     @Override
-    void update(Worker object) throws SQLException;
+    void update(@Param("Worker")Worker object) throws SQLException;
 
     @Override
     void remove(Integer id) throws SQLException;

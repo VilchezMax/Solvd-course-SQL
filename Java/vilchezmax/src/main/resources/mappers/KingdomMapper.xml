@@ -11,14 +11,14 @@
     </resultMap>
 
     <sql id="kingdom_columns">
-        name as kingdom_name
+        k.name as kingdom_name
     </sql>
 
     <select id="getById" parameterType="int" resultMap="KingdomResultMap">
         SELECT
         <include refid="kingdom_columns"/>
         FROM kingdoms k
-        WHERE ID = #{id}
+        WHERE k.id = #{id}
     </select>
 
     <select id="getAll" resultMap="KingdomResultMap">

@@ -18,12 +18,24 @@
                      javaType="Substrate"
                      resultMap="db.dao.ISubstrateDAO.SubstrateResultMap"
                      columnPrefix="substrate_"/>
+        <collection property="analyses"
+                    javaType="ArrayList"
+                    ofType="Analysis"
+                    resultMap="db.dao.IAnalysisDAO.AnalysisResultMap"
+                    columnPrefix="analysis_"/>
+        <collection property="workers"
+                    javaType="ArrayList"
+                    ofType="Worker"
+                    resultMap="db.dao.IWorkerDAO.WorkerResultMap"
+                    columnPrefix="worker_"/>
     </resultMap>
 
     <sql id="experiment_columns">
         e.name as experiment_name,
         <include refid="db.dao.ITestSubjectDAO.test_subject_columns"/>
         <include refid="db.dao.ISubstrateDAO.substrate_columns"/>
+        <include refid="db.dao.IAnalysisDAO.analysis_columns"/>
+        <include refid="db.dao.IWorkerDAO.worker_columns"/>
     </sql>
 
     <select id="getById" resultMap="ExperimentResultMap" parameterType="int">
