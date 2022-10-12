@@ -22,7 +22,6 @@
         <typeAlias alias="Tool" type="db.models.Tool"/>
         <typeAlias alias="Worker" type="db.models.Worker"/>
 
-        <typeAlias alias="AnalysisDAO" type="db.dao.IAnalysisDAO"/>
         <typeAlias alias="AreaDAO" type="db.dao.IAreaDAO"/>
         <typeAlias alias="ClassDAO" type="db.dao.IClassDAO"/>
         <typeAlias alias="ExperimentDAO" type="db.dao.IExperimentDAO"/>
@@ -45,7 +44,7 @@
             </transactionManager>
             <dataSource type="POOLED">
                 <property name="driver" value="${driver}"/>
-                <property name="url" value="${protocol}:${host}:${port}/${dbname}"/>
+                <property name="url" value="${url}"/>
                 <property name="username" value="${user}"/>
                 <property name="password" value="${password}"/>
             </dataSource>

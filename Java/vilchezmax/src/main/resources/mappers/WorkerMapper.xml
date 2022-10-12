@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="WorkerDAO">
+<mapper namespace="db.dao.IWorkerDAO">
     <resultMap id="WorkerResultMap"
                type="Worker"
                autoMapping="false">
@@ -19,31 +19,31 @@
         <association property="role"
                      column="role_id"
                      javaType="Role"
-                     resultMap="RoleResultMap"
+                     resultMap="db.dao.IRoleDAO.RoleResultMap"
                      columnPrefix="role_"/>
 
         <association property="seniority"
                      column="seniority_id"
                      javaType="Seniority"
-                     resultMap="SeniorityResultMap"
+                     resultMap="db.dao.ISeniorityDAO.SeniorityResultMap"
                      columnPrefix="seniority_"/>
 
         <collection property="experiments"
                     javaType="ArrayList"
                     ofType="Experiment"
-                    resultMap="ExperimentResultMap"
+                    resultMap="db.dao.IExperimentDAO.ExperimentResultMap"
                     columnPrefix="experiment_"/>
 
         <collection property="areas"
                     javaType="ArrayList"
                     ofType="Area"
-                    resultMap="AreaResultMap"
+                    resultMap="db.dao.IAreaDAO.AreaResultMap"
                     columnPrefix="area_"/>
     </resultMap>
 
     <sql id="worker_columns">
-        <include refid="RoleDAO.role_columns"/>
-        <include refid="SeniorityDAO.seniority_columns"/>
+        <include refid="db.dao.IRoleDAO.role_columns"/>
+        <include refid="db.dao.ISeniorityDAO.seniority_columns"/>
         w.first_name as worker_first_name,
         w.last_name as worker_last_name,
         w.id_number as worker_id_number,
@@ -51,8 +51,8 @@
         w.email as worker_email,
         w.wage as worker_wage,
         w.phd as worker_phd
-        <include refid="ExperimentDAO.experiment_columns"/>
-        <include refid="AreaDAO.area_columns"/>
+        <include refid="db.dao.IExperimentDAO.experiment_columns"/>
+        <include refid="db.dao.IAreaDAO.area_columns"/>
     </sql>
 
     <select id="getById" parameterType="int" resultMap="WorkerResultMap">

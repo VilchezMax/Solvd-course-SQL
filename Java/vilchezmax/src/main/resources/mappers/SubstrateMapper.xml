@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="SubstrateDAO">
+<mapper namespace="db.dao.ISubstrateDAO">
     <resultMap id="ResultMap"
                type="Substrate"
                autoMapping="false">
@@ -11,14 +11,14 @@
         <association property="healthRisk"
                      column="health_risk_id"
                      javaType="HealthRisk"
-                     resultMap="HealthRiskResultMap"
+                     resultMap="db.dao.IHealthRiskDAO.HealthRiskResultMap"
                      columnPrefix="health_risk_"/>
 
     </resultMap>
 
     <sql id="substrate_columns">
         s.name as substrate_name
-        <include refid="HealthRiskDAO.health_risk_columns"/>
+        <include refid="db.dao.IHealthRiskDAO.health_risk_columns"/>
     </sql>
     <select id="getById" parameterType="int" resultMap="ResultMap">
         SELECT

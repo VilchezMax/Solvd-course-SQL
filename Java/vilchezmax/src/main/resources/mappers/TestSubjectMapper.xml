@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="TestSubjectDAO">
+<mapper namespace="db.dao.ITestSubjectDAO">
     <resultMap id="TestSubjectResultMap"
                type="TestSubject"
                autoMapping="false">
@@ -10,20 +10,20 @@
         <result property="name" column="name"/>
         <association property="class"
                      column="class_id"
-                     resultMap="ClassResultMap"
+                     resultMap="db.dao.IClassDAO.ClassResultMap"
                      javaType="Class"
                      columnPrefix="class_"/>
         <association column="health_risk_id"
                      property="healthRisk"
-                     resultMap="HealthRiskResultMap"
+                     resultMap="db.dao.IHealthRiskDAO.HealthRiskResultMap"
                      javaType="HealthRisk"
                      columnPrefix="health_risk_"/>
     </resultMap>
 
     <sql id="test_subject_columns">
         ts.name as test_subject_name,
-        <include refid="ClassDAO.class_columns"/>
-        <include refid="HealthRiskDAO.health_risk_columns"/>
+        <include refid="db.dao.IClassDAO.class_columns"/>
+        <include refid="db.dao.IHealthRiskDAO.health_risk_columns"/>
     </sql>
 
     <select id="getById" parameterType="int" resultMap="TestSubjectResultMap">

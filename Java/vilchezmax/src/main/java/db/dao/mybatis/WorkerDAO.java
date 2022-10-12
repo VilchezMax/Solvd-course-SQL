@@ -32,7 +32,6 @@ public class WorkerDAO implements IWorkerDAO {
     public Worker getById(Integer id) throws SQLException {
         Worker worker = null;
         SqlSessionFactory factory = MySessionFactory.getInstance().getFactory();
-        factory.getConfiguration().addMapper(IWorkerDAO.class);
 
         try (SqlSession session = factory.openSession()) {
             try {

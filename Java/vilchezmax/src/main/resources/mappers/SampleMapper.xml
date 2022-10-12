@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="SampleDAO">
+<mapper namespace="db.dao.ISampleDAO">
     <resultMap id="SampleResultMap"
                type="Sample"
                autoMapping="false">
@@ -10,14 +10,14 @@
         <result property="name" column="name"/>
         <association property="tool"
                      column="tool_id"
-                     resultMap="ToolResultMap"
+                     resultMap="db.dao.IToolDAO.ToolResultMap"
                      javaType="Tool"
                      columnPrefix="tool_"/>
     </resultMap>
 
     <sql id="sample_columns">
         sm.name as sample_name
-        <include refid="ToolDAO.tool_columns"/>
+        <include refid="db.dao.IToolDAO.tool_columns"/>
     </sql>
 
     <select id="getById" parameterType="int" resultMap="SampleResultMap">

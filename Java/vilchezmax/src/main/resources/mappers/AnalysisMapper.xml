@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="AnalysisDAO">
+<mapper namespace="db.dao.AnalysisDAO">
     <resultMap id="AnalysisResultMap"
                type="Analysis"
                autoMapping="false">
@@ -10,13 +10,13 @@
         <result column="title" property="name"/>
         <association property="sample"
                      column="sample_id"
-                     resultMap="SampleResultMap"
+                     resultMap="db.dao.ISampleDAO.SampleResultMap"
                      columnPrefix="sample_"/>
     </resultMap>
 
     <sql id="analysis_columns">
         a.title as analysis_title,
-        <include refid="SampleDAO.sample_columns"/>
+        <include refid="db.dao.ISampleDAO.sample_columns"/>
     </sql>
 
     <select id="getById" parameterType="int" resultMap="AnalysisResultMap">

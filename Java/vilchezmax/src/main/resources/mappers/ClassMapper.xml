@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="ClassDAO">
+<mapper namespace="db.dao.IClassDAO">
     <resultMap id="ClassResultMap"
                type="Class"
                autoMapping="false">
@@ -10,13 +10,13 @@
         <result column="name" property="name"/>
         <association column="kingdom_id"
                      property="kingdom"
-                     resultMap="KingdomResultMap"
+                     resultMap="db.dao.IKingdomDAO.KingdomResultMap"
                      columnPrefix="kingdom_"/>
     </resultMap>
 
     <sql id="class_columns">
         c.name as class_name,
-        <include refid="KingdomDAO.kingdom_columns"/>
+        <include refid="db.dao.IKingdomDAO.kingdom_columns"/>
     </sql>
 
     <select id="getById" parameterType="int" resultMap="ClassResultMap">

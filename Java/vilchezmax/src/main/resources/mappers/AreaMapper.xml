@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="AreaDAO">
+<mapper namespace="db.dao.IAreaDAO">
     <resultMap id="AreaResultMap"
                type="Area"
                autoMapping="false">
@@ -11,12 +11,12 @@
         <result column="description" property="description"/>
         <association column="labwing_id"
                      property="labwing"
-                     resultMap="LabWingResultMap"
+                     resultMap="db.dao.ILabWingDAO.LabWingResultMap"
                      columnPrefix="labwing_"/>
     </resultMap>
 
     <sql id="area_columns">
-        <include refid="LabWingDAO.labwing_columns"/>
+        <include refid="db.dao.ILabWingDAO.labwing_columns"/>
         a.name as area_name,
         a.description as area_description
     </sql>

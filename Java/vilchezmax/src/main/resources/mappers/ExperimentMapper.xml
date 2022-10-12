@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="ExperimentDAO">
+<mapper namespace="db.dao.IExperimentDAO">
     <resultMap id="ExperimentResultMap"
                type="Experiment"
                autoMapping="false">
@@ -11,19 +11,19 @@
         <association property="subject"
                      column="subject_id"
                      javaType="TestSubject"
-                     resultMap="TestSubjectResultMap"
+                     resultMap="db.dao.ITestSubjectDAO.TestSubjectResultMap"
                      columnPrefix="test_subject_"/>
         <association property="substrate"
                      column="substrate_id"
                      javaType="Substrate"
-                     resultMap="SubstrateResultMap"
+                     resultMap="db.dao.ISubstrateDAO.SubstrateResultMap"
                      columnPrefix="substrate_"/>
     </resultMap>
 
     <sql id="experiment_columns">
         e.name as experiment_name,
-        <include refid="TestSubjectDAO.test_subject_columns"/>
-        <include refid="SubstrateDAO.substrate_columns"/>
+        <include refid="db.dao.ITestSubjectDAO.test_subject_columns"/>
+        <include refid="db.dao.ISubstrateDAO.substrate_columns"/>
     </sql>
 
     <select id="getById" resultMap="ExperimentResultMap" parameterType="int">
